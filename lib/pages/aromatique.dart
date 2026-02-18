@@ -8,10 +8,9 @@ class Aromatique extends StatefulWidget {
 }
 
 class _AromatiqueState extends State<Aromatique> {
-  // Préciser le type List<Map<String, String>> aide Dart à comprendre tes données
-  final List<Map<String, String>> plantes = [
+  final plantes = [
     {
-      "titre": "Lavande", // Corrigé "Levande"
+      "titre": "Lavande",
       "nomscient": "Lavandula angustifolia",
       "description": "Propriétés calmantes et relaxantes.",
       "photo": "assets/images/plante.jpeg"
@@ -35,7 +34,7 @@ class _AromatiqueState extends State<Aromatique> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Retour aux catégories', // Corrigé "au" -> "aux"
+          'Retour aux catégories',
           style: TextStyle(
             color: Colors.green,
             fontStyle: FontStyle.italic,
@@ -45,10 +44,9 @@ class _AromatiqueState extends State<Aromatique> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Colors.green.shade50, // Un vert plus léger pour le fond
+        color: Colors.green.shade50,
         child: Column(
           children: [
-            // Section Header
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -58,7 +56,6 @@ class _AromatiqueState extends State<Aromatique> {
                     width: 120,
                     height: 120,
                     fit: BoxFit.contain,
-                    // Gestion d'erreur si l'image est manquante
                     errorBuilder: (context, error, stackTrace) =>
                         const Icon(Icons.eco, size: 80, color: Colors.green),
                   ),
@@ -90,9 +87,6 @@ class _AromatiqueState extends State<Aromatique> {
                 ],
               ),
             ),
-
-            // Section Liste
-
             Expanded(
               child: ListView.builder(
                 itemCount: plantes.length,
@@ -109,8 +103,7 @@ class _AromatiqueState extends State<Aromatique> {
                       leading: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
-                          plante[
-                              'photo']!, // Le '!' confirme que la valeur n'est pas nulle
+                          plante['photo']!,
                           width: 50,
                           height: 50,
                           fit: BoxFit.cover,
@@ -138,6 +131,7 @@ class _AromatiqueState extends State<Aromatique> {
                       ),
                       trailing: const Icon(Icons.arrow_forward_ios,
                           size: 16, color: Colors.green),
+                      onTap: () {},
                     ),
                   );
                 },

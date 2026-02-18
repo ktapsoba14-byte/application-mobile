@@ -46,7 +46,15 @@ class _CategorieState extends State<Categorie> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text(
+          'Retour',
+          style: TextStyle(
+            color: Colors.green,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+      ),
       body: Column(
         children: [
           Container(
