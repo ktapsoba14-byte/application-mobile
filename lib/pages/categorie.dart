@@ -13,25 +13,25 @@ class _CategorieState extends State<Categorie> {
       "titre": "Plantes Aromatiques",
       "description":
           "Herbes parfumées aux multiples usages culinaires et thérapeutiques.",
-      "icon": "eco",
+      "icon": Icons.eco,
     },
     {
       "titre": "Plantes Digestives",
       "description":
           "Plantes qui facilitent la digestion et soulagent les troubles gastro-intestinaux.",
-      "icon": Icons.eco,
+      "icon": Icons.restaurant,
     },
     {
       "titre": "Plantes Apaisantes",
       "description":
           "Plantes relaxantes qui calment le stress et favorisent le sommeil.",
-      "icon": Icons.eco,
+      "icon": Icons.bedtime,
     },
     {
       "titre": "Plantes Cicatrisantes",
       "description":
           "Plantes aux propriétes curatives pour la peau et les blessures.",
-      "icon": Icons.eco,
+      "icon": Icons.healing,
     },
   ];
 
@@ -65,7 +65,28 @@ class _CategorieState extends State<Categorie> {
                 )
               ],
             ),
-          )
+          ),
+          Expanded(
+              child: ListView.builder(
+            padding: const EdgeInsets.all(10),
+            itemCount: categories.length,
+            itemBuilder: (context, index) {
+              final categorie = categories[index];
+              final titre = categorie['titre'];
+              final description = categorie['description'];
+              final icon = categorie['icon'];
+              return Card(
+                elevation: 2,
+                child: ListTile(
+                  leading: Icon(icon as IconData, color: Colors.green),
+                  title: Text('$titre'),
+                  subtitle: Text('$description'),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () {},
+                ),
+              );
+            },
+          ))
         ],
       ),
     );
