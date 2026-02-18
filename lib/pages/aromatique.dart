@@ -8,10 +8,144 @@ class Aromatique extends StatefulWidget {
 }
 
 class _AromatiqueState extends State<Aromatique> {
+  // Préciser le type List<Map<String, String>> aide Dart à comprendre tes données
+  final List<Map<String, String>> plantes = [
+    {
+      "titre": "Lavande", // Corrigé "Levande"
+      "nomscient": "Lavandula angustifolia",
+      "description": "Propriétés calmantes et relaxantes.",
+      "photo": "assets/images/plante.jpeg"
+    },
+    {
+      "titre": "Menthe",
+      "nomscient": "Mentha piperita",
+      "description": "Fraîche avec de nombreuses vertus digestives.",
+      "photo": "assets/images/plante.jpeg"
+    },
+    {
+      "titre": "Romarin",
+      "nomscient": "Rosmarinus officinalis",
+      "description": "Stimulante aux propriétés antioxydantes.",
+      "photo": "assets/images/plante.jpeg"
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: const Text(
+          'Retour aux catégories', // Corrigé "au" -> "aux"
+          style: TextStyle(
+            color: Colors.green,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+      ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.green.shade50, // Un vert plus léger pour le fond
+        child: Column(
+          children: [
+            // Section Header
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/images/menthe.png',
+                    width: 120,
+                    height: 120,
+                    fit: BoxFit.contain,
+                    // Gestion d'erreur si l'image est manquante
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.eco, size: 80, color: Colors.green),
+                  ),
+                  const SizedBox(height: 12),
+                  const Text(
+                    'Plantes Aromatiques',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                        color: Colors.green),
+                  ),
+                  const Text(
+                    'Herbes parfumées aux multiples usages culinaires et thérapeutiques',
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.eco, color: Colors.green),
+                      const SizedBox(width: 8),
+                      Text(
+                        '${plantes.length} plantes disponibles',
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.green),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+
+            // Section Liste
+
+            Expanded(
+              child: ListView.builder(
+                itemCount: plantes.length,
+                itemBuilder: (context, index) {
+                  final plante = plantes[index];
+                  return Card(
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                    elevation: 1,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.all(10),
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          plante[
+                              'photo']!, // Le '!' confirme que la valeur n'est pas nulle
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      title: Text(
+                        plante['titre']!,
+                        style: const TextStyle(
+                            color: Colors.green, fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            plante['nomscient']!,
+                            style: const TextStyle(
+                                fontStyle: FontStyle.italic, fontSize: 13),
+                          ),
+                          const SizedBox(height: 4),
+                          Text(
+                            plante['description']!,
+                            style: const TextStyle(fontSize: 12),
+                          )
+                        ],
+                      ),
+                      trailing: const Icon(Icons.arrow_forward_ios,
+                          size: 16, color: Colors.green),
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

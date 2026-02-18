@@ -1,3 +1,7 @@
+import 'package:application_mobile/pages/apaisante.dart';
+import 'package:application_mobile/pages/aromatique.dart';
+import 'package:application_mobile/pages/cicatrisante.dart';
+import 'package:application_mobile/pages/digestive.dart';
 import 'package:flutter/material.dart';
 
 class Categorie extends StatefulWidget {
@@ -14,24 +18,28 @@ class _CategorieState extends State<Categorie> {
       "description":
           "Herbes parfumées aux multiples usages culinaires et thérapeutiques.",
       "icon": "assets/images/menthe.png",
+      "page": const Aromatique(),
     },
     {
       "titre": "Plantes Digestives",
       "description":
           "Plantes qui facilitent la digestion et soulagent les troubles gastro-intestinaux.",
       "icon": "assets/images/feuille.png",
+      "page": const Digestive(),
     },
     {
       "titre": "Plantes Apaisantes",
       "description":
           "Plantes relaxantes qui calment le stress et favorisent le sommeil.",
       "icon": "assets/images/sakura.png",
+      "page": const Apaisante(),
     },
     {
       "titre": "Plantes Cicatrisantes",
       "description":
           "Plantes aux propriétes curatives pour la peau et les blessures.",
       "icon": "assets/images/pousse.png",
+      "page": const Cicatrisante(),
     },
   ];
 
@@ -75,6 +83,7 @@ class _CategorieState extends State<Categorie> {
               final titre = categorie['titre'];
               final description = categorie['description'];
               final icon = categorie['icon'];
+              final page = categorie['page'];
               return Card(
                 elevation: 2,
                 child: ListTile(
@@ -85,14 +94,18 @@ class _CategorieState extends State<Categorie> {
                   ),
                   title: Text(
                     '$titre',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
-                    ),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   subtitle: Text('$description'),
                   trailing: const Icon(Icons.chevron_right),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => page as Widget,
+                      ),
+                    );
+                  },
                 ),
               );
             },
