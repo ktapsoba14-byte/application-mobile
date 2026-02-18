@@ -1,3 +1,4 @@
+import 'package:application_mobile/pages/categorie.dart';
 import 'package:flutter/material.dart';
 
 class Bienvenue extends StatelessWidget {
@@ -69,7 +70,12 @@ class Bienvenue extends StatelessWidget {
                   height: 50,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Categorie())
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.green[800],
