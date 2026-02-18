@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Digestive extends StatefulWidget {
-  const Digestive({super.key});
+class Apaisante extends StatefulWidget {
+  const Apaisante({super.key});
 
   @override
-  State<Digestive> createState() => _DigestiveState();
+  State<Apaisante> createState() => _ApaisanteState();
 }
 
-class _DigestiveState extends State<Digestive> {
+class _ApaisanteState extends State<Apaisante> {
   final plantes = [
     {
       "titre": "Lavande",
@@ -52,7 +52,7 @@ class _DigestiveState extends State<Digestive> {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/images/feuille.png',
+                    'assets/images/sakura.png',
                     width: 120,
                     height: 120,
                     fit: BoxFit.contain,
@@ -61,14 +61,14 @@ class _DigestiveState extends State<Digestive> {
                   ),
                   const SizedBox(height: 12),
                   const Text(
-                    'Plantes Digestives',
+                    'Plantes Apaisantes',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
                         color: Colors.green),
                   ),
                   const Text(
-                    'Plantes qui facilitent la digestion et soulagent les troubles gastro-intestinaux.',
+                    'Plantes relexantes qui calment le stress et favorise le sommeil.',
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 12),
@@ -92,6 +92,10 @@ class _DigestiveState extends State<Digestive> {
                 itemCount: plantes.length,
                 itemBuilder: (context, index) {
                   final plante = plantes[index];
+                  final titre = plante['titre'];
+                  final nomscient = plante['nomscient'];
+                  final description = plante['description'];
+                  final photo = plante['photo'];
                   return Card(
                     margin:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -103,14 +107,14 @@ class _DigestiveState extends State<Digestive> {
                       leading: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
-                          plante['photo']!,
+                          '$photo',
                           width: 50,
                           height: 50,
                           fit: BoxFit.cover,
                         ),
                       ),
                       title: Text(
-                        plante['titre']!,
+                        '$titre',
                         style: const TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
@@ -118,13 +122,13 @@ class _DigestiveState extends State<Digestive> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            plante['nomscient']!,
+                            '$nomscient',
                             style: const TextStyle(
                                 fontStyle: FontStyle.italic, fontSize: 13),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            plante['description']!,
+                            '$description',
                             style: const TextStyle(fontSize: 12),
                           )
                         ],

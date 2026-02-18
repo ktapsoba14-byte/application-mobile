@@ -1,7 +1,7 @@
-import 'package:application_mobile/pages/apaisante.dart';
-import 'package:application_mobile/pages/aromatique.dart';
-import 'package:application_mobile/pages/cicatrisante.dart';
-import 'package:application_mobile/pages/digestive.dart';
+import 'package:application_mobile/pages/categorie/apaisante.dart';
+import 'package:application_mobile/pages/categorie/aromatique.dart';
+import 'package:application_mobile/pages/categorie/cicatrisante.dart';
+import 'package:application_mobile/pages/categorie/digestive.dart';
 import 'package:flutter/material.dart';
 
 class Categorie extends StatefulWidget {

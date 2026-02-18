@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Aromatique extends StatefulWidget {
-  const Aromatique({super.key});
+class Digestive extends StatefulWidget {
+  const Digestive({super.key});
 
   @override
-  State<Aromatique> createState() => _AromatiqueState();
+  State<Digestive> createState() => _DigestiveState();
 }
 
-class _AromatiqueState extends State<Aromatique> {
+class _DigestiveState extends State<Digestive> {
   final plantes = [
     {
       "titre": "Lavande",
@@ -52,7 +52,7 @@ class _AromatiqueState extends State<Aromatique> {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/images/menthe.png',
+                    'assets/images/feuille.png',
                     width: 120,
                     height: 120,
                     fit: BoxFit.contain,
@@ -61,14 +61,14 @@ class _AromatiqueState extends State<Aromatique> {
                   ),
                   const SizedBox(height: 12),
                   const Text(
-                    'Plantes Aromatiques',
+                    'Plantes Digestives',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
                         color: Colors.green),
                   ),
                   const Text(
-                    'Herbes parfumées aux multiples usages culinaires et thérapeutiques',
+                    'Plantes qui facilitent la digestion et soulagent les troubles gastro-intestinaux.',
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 12),
@@ -92,6 +92,10 @@ class _AromatiqueState extends State<Aromatique> {
                 itemCount: plantes.length,
                 itemBuilder: (context, index) {
                   final plante = plantes[index];
+                  final titre = plante['titre'];
+                  final nomscient = plante['nomscient'];
+                  final description = plante['description'];
+                  final photo = plante['photo'];
                   return Card(
                     margin:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -103,14 +107,14 @@ class _AromatiqueState extends State<Aromatique> {
                       leading: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
-                          plante['photo']!,
+                          '$photo',
                           width: 50,
                           height: 50,
                           fit: BoxFit.cover,
                         ),
                       ),
                       title: Text(
-                        plante['titre']!,
+                        '$titre',
                         style: const TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
@@ -118,13 +122,13 @@ class _AromatiqueState extends State<Aromatique> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            plante['nomscient']!,
+                            '$nomscient',
                             style: const TextStyle(
                                 fontStyle: FontStyle.italic, fontSize: 13),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            plante['description']!,
+                            '$description',
                             style: const TextStyle(fontSize: 12),
                           )
                         ],

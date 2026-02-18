@@ -92,6 +92,10 @@ class _CicatrisanteState extends State<Cicatrisante> {
                 itemCount: plantes.length,
                 itemBuilder: (context, index) {
                   final plante = plantes[index];
+                  final titre = plante['titre'];
+                  final nomscient = plante['nomscient'];
+                  final description = plante['description'];
+                  final photo = plante['photo'];
                   return Card(
                     margin:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -103,14 +107,14 @@ class _CicatrisanteState extends State<Cicatrisante> {
                       leading: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
-                          plante['photo']!,
+                          '$photo',
                           width: 50,
                           height: 50,
                           fit: BoxFit.cover,
                         ),
                       ),
                       title: Text(
-                        plante['titre']!,
+                        '$titre',
                         style: const TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
@@ -118,13 +122,13 @@ class _CicatrisanteState extends State<Cicatrisante> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            plante['nomscient']!,
+                            '$nomscient',
                             style: const TextStyle(
                                 fontStyle: FontStyle.italic, fontSize: 13),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            plante['description']!,
+                            '$description',
                             style: const TextStyle(fontSize: 12),
                           )
                         ],

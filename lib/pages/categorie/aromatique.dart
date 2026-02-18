@@ -1,31 +1,37 @@
+import 'package:application_mobile/pages/aromatiques/lavande.dart';
+import 'package:application_mobile/pages/aromatiques/menthe.dart';
+import 'package:application_mobile/pages/aromatiques/romarin.dart';
 import 'package:flutter/material.dart';
 
-class Apaisante extends StatefulWidget {
-  const Apaisante({super.key});
+class Aromatique extends StatefulWidget {
+  const Aromatique({super.key});
 
   @override
-  State<Apaisante> createState() => _ApaisanteState();
+  State<Aromatique> createState() => _AromatiqueState();
 }
 
-class _ApaisanteState extends State<Apaisante> {
+class _AromatiqueState extends State<Aromatique> {
   final plantes = [
     {
       "titre": "Lavande",
       "nomscient": "Lavandula angustifolia",
       "description": "Propriétés calmantes et relaxantes.",
-      "photo": "assets/images/plante.jpeg"
+      "photo": "assets/images/plante.jpeg",
+      "page": const Lavande(),
     },
     {
       "titre": "Menthe",
       "nomscient": "Mentha piperita",
       "description": "Fraîche avec de nombreuses vertus digestives.",
-      "photo": "assets/images/plante.jpeg"
+      "photo": "assets/images/plante.jpeg",
+      "page": const Menthe(),
     },
     {
       "titre": "Romarin",
       "nomscient": "Rosmarinus officinalis",
       "description": "Stimulante aux propriétés antioxydantes.",
-      "photo": "assets/images/plante.jpeg"
+      "photo": "assets/images/plante.jpeg",
+      "page": const Romarin(),
     }
   ];
 
@@ -52,7 +58,7 @@ class _ApaisanteState extends State<Apaisante> {
               child: Column(
                 children: [
                   Image.asset(
-                    'assets/images/sakura.png',
+                    'assets/images/menthe.png',
                     width: 120,
                     height: 120,
                     fit: BoxFit.contain,
@@ -61,14 +67,14 @@ class _ApaisanteState extends State<Apaisante> {
                   ),
                   const SizedBox(height: 12),
                   const Text(
-                    'Plantes Apaisantes',
+                    'Plantes Aromatiques',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 25,
                         color: Colors.green),
                   ),
                   const Text(
-                    'Plantes relexantes qui calment le stress et favorise le sommeil.',
+                    'Herbes parfumées aux multiples usages culinaires et thérapeutiques',
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 12),
@@ -92,6 +98,11 @@ class _ApaisanteState extends State<Apaisante> {
                 itemCount: plantes.length,
                 itemBuilder: (context, index) {
                   final plante = plantes[index];
+                  final titre = plante['titre'];
+                  final nomscient = plante['nomscient'];
+                  final description = plante['description'];
+                  final photo = plante['photo'];
+                  final page = plante['page'];
                   return Card(
                     margin:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -103,14 +114,14 @@ class _ApaisanteState extends State<Apaisante> {
                       leading: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.asset(
-                          plante['photo']!,
+                          '$photo',
                           width: 50,
                           height: 50,
                           fit: BoxFit.cover,
                         ),
                       ),
                       title: Text(
-                        plante['titre']!,
+                        '$titre',
                         style: const TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
@@ -118,20 +129,27 @@ class _ApaisanteState extends State<Apaisante> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            plante['nomscient']!,
+                            '$nomscient',
                             style: const TextStyle(
                                 fontStyle: FontStyle.italic, fontSize: 13),
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            plante['description']!,
+                            '$description',
                             style: const TextStyle(fontSize: 12),
                           )
                         ],
                       ),
                       trailing: const Icon(Icons.arrow_forward_ios,
                           size: 16, color: Colors.green),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => page as Widget,
+                          ),
+                        );
+                      },
                     ),
                   );
                 },
