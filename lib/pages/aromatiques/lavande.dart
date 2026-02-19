@@ -113,8 +113,7 @@ class Lavande extends StatelessWidget {
                             color: Colors.green,
                             size: 30,
                           ),
-                          SizedBox(
-                              width: 10),
+                          SizedBox(width: 10),
                           Text(
                             "Vertus et Bienfaits",
                             style: TextStyle(color: Colors.green, fontSize: 25),
@@ -189,7 +188,7 @@ class Lavande extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Container(
                   width: 450,
-                  height: 100,
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(15),
@@ -201,7 +200,201 @@ class Lavande extends StatelessWidget {
                       ),
                     ],
                   ),
-                  
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.info_outline,
+                            color: Colors.blue,
+                            size: 30,
+                          ),
+                          Text(
+                            "Mode d'utilisation",
+                            style: TextStyle(color: Colors.blue, fontSize: 25),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            color: Colors.blue,
+                            size: 10,
+                          ),
+                          Expanded(
+                              child: Text(
+                            "Infusion : 1 à 2 cuillères à café de fleurs séchées dans une tasse d'eau chaude",
+                            style: TextStyle(fontSize: 15),
+                          )),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            color: Colors.blue,
+                            size: 10,
+                          ),
+                          Expanded(
+                              child: Text(
+                            "Huile essentielle : quelques gouttes dans un diffuseur ou sur l'oreill",
+                            style: TextStyle(fontSize: 15),
+                          )),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            color: Colors.blue,
+                            size: 10,
+                          ),
+                          Expanded(
+                              child: Text(
+                            "Bain relaxant : ajouter des fleurs séchées ou de l'huile essentielle",
+                            style: TextStyle(fontSize: 15),
+                          )),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            color: Colors.blue,
+                            size: 10,
+                          ),
+                          Expanded(
+                              child: Text(
+                            "Application cutanée : diluer l'huile essentielle dans une huile végétale",
+                            style: TextStyle(fontSize: 15),
+                          )),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Container(
+                  width: 450,
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.orange.shade50,
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(color: Colors.orange, width: 2),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.warning_amber_rounded,
+                            color: Colors.deepOrange,
+                            size: 30,
+                          ),
+                          Text(
+                            "Précautions d'Emploi",
+                            style: TextStyle(
+                                color: Colors.deepOrange, fontSize: 25),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            size: 10,
+                            color: Colors.deepOrange,
+                          ),
+                          Expanded(
+                              child: Text(
+                            "L'huile essentielle pure peut irriter la peau",
+                            style: TextStyle(fontSize: 15),
+                          ))
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            size: 10,
+                            color: Colors.deepOrange,
+                          ),
+                          Expanded(
+                              child: Text(
+                            "Déconseillée pendant la grossesse (premier trimestre)",
+                            style: TextStyle(fontSize: 15),
+                          ))
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            size: 10,
+                            color: Colors.deepOrange,
+                          ),
+                          Expanded(
+                              child: Text(
+                            "Peut interagir avec certains sédatifs",
+                            style: TextStyle(fontSize: 15),
+                          ))
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Container(
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: Colors.orange,
+                            width: 2,
+                          ),
+                        ),
+                        child: RichText(
+                          text: TextSpan(
+                            style: const TextStyle(
+                              color: Colors.black87,
+                              fontSize: 14,
+                              height: 1.4,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "Important : ",
+                                style: TextStyle(
+                                  color: Colors.orange.shade900,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const TextSpan(
+                                text:
+                                    "Ces informations sont fournies à titre éducatif. Consultez toujours un professionnel de santé avant d'utiliser des plantes médicinales, surtout en cas de grossesse, allaitement ou traitement médical en cours.",
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],
