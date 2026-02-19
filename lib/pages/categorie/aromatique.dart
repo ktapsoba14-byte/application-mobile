@@ -16,21 +16,21 @@ class _AromatiqueState extends State<Aromatique> {
       "titre": "Lavande",
       "nomscient": "Lavandula angustifolia",
       "description": "Propriétés calmantes et relaxantes.",
-      "photo": "assets/images/plante.jpeg",
+      "photo": "assets/images/lavande.jpeg",
       "page": const Lavande(),
     },
     {
       "titre": "Menthe",
       "nomscient": "Mentha piperita",
       "description": "Fraîche avec de nombreuses vertus digestives.",
-      "photo": "assets/images/plante.jpeg",
+      "photo": "assets/images/menthe.jpeg",
       "page": const Menthe(),
     },
     {
       "titre": "Romarin",
       "nomscient": "Rosmarinus officinalis",
       "description": "Stimulante aux propriétés antioxydantes.",
-      "photo": "assets/images/plante.jpeg",
+      "photo": "assets/images/romarin.jpeg",
       "page": const Romarin(),
     }
   ];

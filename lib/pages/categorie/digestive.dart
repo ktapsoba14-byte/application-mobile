@@ -10,22 +10,22 @@ class Digestive extends StatefulWidget {
 class _DigestiveState extends State<Digestive> {
   final plantes = [
     {
-      "titre": "Lavande",
-      "nomscient": "Lavandula angustifolia",
-      "description": "Propriétés calmantes et relaxantes.",
-      "photo": "assets/images/plante.jpeg"
+      "titre": "Camomille",
+      "nomscient": "Matricaria chamomilla",
+      "description": "Plante médicinale traditionnelle aux propriétés apaisantes.",
+      "photo": "assets/images/camomille.jpeg"
     },
     {
       "titre": "Menthe",
       "nomscient": "Mentha piperita",
       "description": "Fraîche avec de nombreuses vertus digestives.",
-      "photo": "assets/images/plante.jpeg"
+      "photo": "assets/images/menthe.jpeg"
     },
     {
-      "titre": "Romarin",
-      "nomscient": "Rosmarinus officinalis",
-      "description": "Stimulante aux propriétés antioxydantes.",
-      "photo": "assets/images/plante.jpeg"
+      "titre": "Gingembre",
+      "nomscient": "Zingiber officinale",
+      "description": "Racine épicée aux puissantes propriétés anti-inflammatoire.",
+      "photo": "assets/images/gingimbre.jpeg"
     }
   ];
 

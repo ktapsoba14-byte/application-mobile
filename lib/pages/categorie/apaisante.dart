@@ -16,17 +16,11 @@ class _ApaisanteState extends State<Apaisante> {
       "photo": "assets/images/plante.jpeg"
     },
     {
-      "titre": "Menthe",
-      "nomscient": "Mentha piperita",
-      "description": "Fraîche avec de nombreuses vertus digestives.",
-      "photo": "assets/images/plante.jpeg"
+      "titre": "Camomille",
+      "nomscient": "Matricaria chamomilla",
+      "description": "Plante médicinale traditionnelle aux propriétés apaisantes.",
+      "photo": "assets/images/camomille.jpeg"
     },
-    {
-      "titre": "Romarin",
-      "nomscient": "Rosmarinus officinalis",
-      "description": "Stimulante aux propriétés antioxydantes.",
-      "photo": "assets/images/plante.jpeg"
-    }
   ];
 
   @override

@@ -7,7 +7,13 @@ class Lavande extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lavande'),
+        title: Text(
+          'Retour aux Plantes Aromatique',
+          style: TextStyle(
+            color: Colors.green,
+            fontStyle: FontStyle.italic,
+          ),
+        ),
       ),
     );
   }

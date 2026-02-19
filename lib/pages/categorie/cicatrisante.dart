@@ -10,23 +10,11 @@ class Cicatrisante extends StatefulWidget {
 class _CicatrisanteState extends State<Cicatrisante> {
   final plantes = [
     {
-      "titre": "Lavande",
-      "nomscient": "Lavandula angustifolia",
-      "description": "Propriétés calmantes et relaxantes.",
-      "photo": "assets/images/plante.jpeg"
+      "titre": "Aloe Vera",
+      "nomscient": "Aloe barbadenis miller",
+      "description": "Plantes succulente reconnue pour ses vertus hydratantes et cicatrisantes.",
+      "photo": "assets/images/aloe.jpeg"
     },
-    {
-      "titre": "Menthe",
-      "nomscient": "Mentha piperita",
-      "description": "Fraîche avec de nombreuses vertus digestives.",
-      "photo": "assets/images/plante.jpeg"
-    },
-    {
-      "titre": "Romarin",
-      "nomscient": "Rosmarinus officinalis",
-      "description": "Stimulante aux propriétés antioxydantes.",
-      "photo": "assets/images/plante.jpeg"
-    }
   ];
 
   @override
