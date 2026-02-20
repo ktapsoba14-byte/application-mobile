@@ -1,3 +1,6 @@
+import 'package:application_mobile/pages/digestives/menthe.dart';
+import 'package:application_mobile/pages/digestives/camomille.dart';
+import 'package:application_mobile/pages/digestives/gingembre.dart';
 import 'package:flutter/material.dart';
 
 class Digestive extends StatefulWidget {
@@ -12,20 +15,25 @@ class _DigestiveState extends State<Digestive> {
     {
       "titre": "Camomille",
       "nomscient": "Matricaria chamomilla",
-      "description": "Plante médicinale traditionnelle aux propriétés apaisantes.",
-      "photo": "assets/images/camomille.jpeg"
+      "description":
+          "Plante médicinale traditionnelle aux propriétés apaisantes.",
+      "photo": "assets/images/camomille.jpeg",
+      "page": const Camomille(),
     },
     {
       "titre": "Menthe",
       "nomscient": "Mentha piperita",
       "description": "Fraîche avec de nombreuses vertus digestives.",
-      "photo": "assets/images/menthe.jpeg"
+      "photo": "assets/images/menthe.jpeg",
+      "page": const Menthe(),
     },
     {
       "titre": "Gingembre",
       "nomscient": "Zingiber officinale",
-      "description": "Racine épicée aux puissantes propriétés anti-inflammatoire.",
-      "photo": "assets/images/gingimbre.jpeg"
+      "description":
+          "Racine épicée aux puissantes propriétés anti-inflammatoire.",
+      "photo": "assets/images/gingimbre.jpeg",
+      "page": const Gingembre(),
     }
   ];
 
@@ -96,6 +104,7 @@ class _DigestiveState extends State<Digestive> {
                   final nomscient = plante['nomscient'];
                   final description = plante['description'];
                   final photo = plante['photo'];
+                  final page = plante['page'];
                   return Card(
                     margin:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -135,7 +144,12 @@ class _DigestiveState extends State<Digestive> {
                       ),
                       trailing: const Icon(Icons.arrow_forward_ios,
                           size: 16, color: Colors.green),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => page as Widget));
+                      },
                     ),
                   );
                 },
