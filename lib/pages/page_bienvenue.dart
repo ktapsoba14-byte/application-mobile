@@ -73,33 +73,32 @@ class Bienvenue extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Categorie())
+                      MaterialPageRoute(
+                          builder: (context) => const Categorie()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.green[800],
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 15),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
+                        horizontal: 20, vertical: 15),
+                    shape: const StadiumBorder(),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: const [
-                      Text(
-                        'Explorer Nos Plantes !',
-                        style: TextStyle(fontSize: 18),
+                      Flexible(
+                        child: Text(
+                          "Explorer nos plantes",
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Icon(
-                        Icons.arrow_forward,
-                      )
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward),
                     ],
                   ),
-                ),
+                )
               ],
             ),
           ))

@@ -23,22 +23,28 @@ class Lavande extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Container(
-                  width: 450,
-                  height: 450,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 10,
+                        )
+                      ]),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ClipRRect(
                         borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(13)),
+                            top: Radius.circular(15)),
                         child: Image.asset(
                           'assets/images/lavande.jpeg',
-                          width: 450,
-                          height: 250,
+                          width: double.infinity,
+                          height: 200,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -49,7 +55,7 @@ class Lavande extends StatelessWidget {
                           children: [
                             const Row(
                               children: [
-                                Icon(Icons.eco, color: Colors.green),
+                                Icon(Icons.eco, color: Colors.green, size: 20),
                                 SizedBox(width: 5),
                                 Text(
                                   "PLANTE MÉDICINALE",
@@ -59,7 +65,7 @@ class Lavande extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 15),
+                            const SizedBox(height: 10),
                             const Text(
                               "Lavande",
                               style: TextStyle(
@@ -72,11 +78,11 @@ class Lavande extends StatelessWidget {
                               "Lavandula angustifolia",
                               style: TextStyle(
                                 fontStyle: FontStyle.italic,
-                                fontSize: 20,
+                                fontSize: 18,
                                 color: Colors.grey,
                               ),
                             ),
-                            const SizedBox(height: 15),
+                            const SizedBox(height: 10),
                             const Text(
                               "Plante aromatique aux propriétés calmantes et relaxantes.",
                             ),
@@ -307,11 +313,15 @@ class Lavande extends StatelessWidget {
                             color: Colors.deepOrange,
                             size: 30,
                           ),
-                          Text(
-                            "Précautions d'Emploi",
+                          SizedBox(width: 10),
+                          Expanded(
+                              child: Text(
+                            "Precautions d'Emploi",
                             style: TextStyle(
-                                color: Colors.deepOrange, fontSize: 25),
-                          )
+                                color: Colors.deepOrange,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold),
+                          )),
                         ],
                       ),
                       const SizedBox(height: 15),
