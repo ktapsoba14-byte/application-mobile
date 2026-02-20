@@ -8,7 +8,7 @@ class Camomille extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Retour aux Plantes Apaisantes',
+          'Retour aux Plantes Digestives',
           style: TextStyle(
             color: Colors.green,
             fontStyle: FontStyle.italic,
