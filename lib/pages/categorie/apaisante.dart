@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:application_mobile/pages/apaisantes/lavande.dart';
+import 'package:application_mobile/pages/apaisantes/camomille.dart';
 
 class Apaisante extends StatefulWidget {
   const Apaisante({super.key});
@@ -13,13 +15,16 @@ class _ApaisanteState extends State<Apaisante> {
       "titre": "Lavande",
       "nomscient": "Lavandula angustifolia",
       "description": "Propriétés calmantes et relaxantes.",
-      "photo": "assets/images/plante.jpeg"
+      "photo": "assets/images/plante.jpeg",
+      "page": const Lavande(),
     },
     {
       "titre": "Camomille",
       "nomscient": "Matricaria chamomilla",
-      "description": "Plante médicinale traditionnelle aux propriétés apaisantes.",
-      "photo": "assets/images/camomille.jpeg"
+      "description":
+          "Plante médicinale traditionnelle aux propriétés apaisantes.",
+      "photo": "assets/images/camomille.jpeg",
+      "page": const Camomille(),
     },
   ];
 
@@ -90,6 +95,7 @@ class _ApaisanteState extends State<Apaisante> {
                   final nomscient = plante['nomscient'];
                   final description = plante['description'];
                   final photo = plante['photo'];
+                  final page = plante['page'];
                   return Card(
                     margin:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -129,7 +135,14 @@ class _ApaisanteState extends State<Apaisante> {
                       ),
                       trailing: const Icon(Icons.arrow_forward_ios,
                           size: 16, color: Colors.green),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => page as Widget,
+                          ),
+                        );
+                      },
                     ),
                   );
                 },

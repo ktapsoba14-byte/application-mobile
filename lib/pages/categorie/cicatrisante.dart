@@ -1,3 +1,4 @@
+import 'package:application_mobile/pages/cicatrisantes/aloe.dart';
 import 'package:flutter/material.dart';
 
 class Cicatrisante extends StatefulWidget {
@@ -12,8 +13,10 @@ class _CicatrisanteState extends State<Cicatrisante> {
     {
       "titre": "Aloe Vera",
       "nomscient": "Aloe barbadenis miller",
-      "description": "Plantes succulente reconnue pour ses vertus hydratantes et cicatrisantes.",
-      "photo": "assets/images/aloe.jpeg"
+      "description":
+          "Plantes succulente reconnue pour ses vertus hydratantes et cicatrisantes.",
+      "photo": "assets/images/aloe.jpeg",
+      "page": const Aloe(),
     },
   ];
 
@@ -84,6 +87,7 @@ class _CicatrisanteState extends State<Cicatrisante> {
                   final nomscient = plante['nomscient'];
                   final description = plante['description'];
                   final photo = plante['photo'];
+                  final page = plante['page'];
                   return Card(
                     margin:
                         const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
@@ -123,7 +127,14 @@ class _CicatrisanteState extends State<Cicatrisante> {
                       ),
                       trailing: const Icon(Icons.arrow_forward_ios,
                           size: 16, color: Colors.green),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => page as Widget,
+                          ),
+                        );
+                      },
                     ),
                   );
                 },
