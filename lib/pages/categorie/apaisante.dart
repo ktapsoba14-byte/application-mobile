@@ -1,6 +1,10 @@
+import 'dart:ui';
+import 'package:application_mobile/pages/aromatiques/lavande.dart';
+import 'package:application_mobile/pages/digestives/camomille.dart';
 import 'package:flutter/material.dart';
-import 'package:application_mobile/pages/apaisantes/lavande.dart';
-import 'package:application_mobile/pages/apaisantes/camomille.dart';
+
+// Importe tes pages ici
+// import 'package:application_mobile/pages/apaisantes/lavande.dart';
 
 class Apaisante extends StatefulWidget {
   const Apaisante({super.key});
@@ -10,145 +14,216 @@ class Apaisante extends StatefulWidget {
 }
 
 class _ApaisanteState extends State<Apaisante> {
+  final Set<int> _favorisPlantes = {};
+
   final plantes = [
     {
       "titre": "Lavande",
       "nomscient": "Lavandula angustifolia",
-      "description": "Propriétés calmantes et relaxantes.",
+      "description": "Propriétés calmantes, relaxantes et cicatrisantes.",
       "photo": "assets/images/plante.jpeg",
-      "page": const Lavande(),
+      "page": const Lavande(), // Remplace par Lavande()
     },
     {
       "titre": "Camomille",
       "nomscient": "Matricaria chamomilla",
       "description":
-          "Plante médicinale traditionnelle aux propriétés apaisantes.",
+          "Idéale pour apaiser le système nerveux et faciliter le sommeil.",
       "photo": "assets/images/camomille.jpeg",
-      "page": const Camomille(),
+      "page": const Camomille(), // Remplace par Camomille()
     },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text(
-          'Retour aux catégories',
-          style: TextStyle(
-            color: Colors.green,
-            fontStyle: FontStyle.italic,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Container(
+          margin: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.2),
+            shape: BoxShape.circle,
+          ),
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                color: Colors.white, size: 18),
+            onPressed: () => Navigator.pop(context),
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        color: Colors.green.shade50,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/sakura.png',
-                    width: 120,
-                    height: 120,
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) =>
-                        const Icon(Icons.eco, size: 80, color: Colors.green),
-                  ),
-                  const SizedBox(height: 12),
-                  const Text(
-                    'Plantes Apaisantes',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                        color: Colors.green),
-                  ),
-                  const Text(
-                    'Plantes relexantes qui calment le stress et favorise le sommeil.',
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.eco, color: Colors.green),
-                      const SizedBox(width: 8),
-                      Text(
-                        '${plantes.length} plantes disponibles',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.green),
-                      )
-                    ],
-                  )
-                ],
+      body: Stack(
+        children: [
+          // Fond dégradé
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFF2D5A27), Color(0xFF1E3C1A)],
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: plantes.length,
-                itemBuilder: (context, index) {
-                  final plante = plantes[index];
-                  final titre = plante['titre'];
-                  final nomscient = plante['nomscient'];
-                  final description = plante['description'];
-                  final photo = plante['photo'];
-                  final page = plante['page'];
-                  return Card(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                    elevation: 1,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.all(10),
-                      leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(
-                          '$photo',
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
+          ),
+          SafeArea(
+            child: Column(
+              children: [
+                _buildHeader(),
+                Expanded(
+                  child: ListView.builder(
+                    padding: const EdgeInsets.only(top: 10, bottom: 20),
+                    itemCount: plantes.length,
+                    itemBuilder: (context, index) {
+                      // --- AJOUT DE L'ANIMATION ---
+                      return TweenAnimationBuilder<double>(
+                        duration: Duration(milliseconds: 600 + (index * 200)),
+                        tween: Tween(begin: 0.0, end: 1.0),
+                        curve: Curves.easeOutQuart,
+                        builder: (context, value, child) {
+                          return Opacity(
+                            opacity: value,
+                            child: Transform.translate(
+                              offset: Offset(0, 50 * (1 - value)),
+                              child: child,
+                            ),
+                          );
+                        },
+                        child: _buildPlantCard(index),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.15),
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white.withOpacity(0.2)),
+            ),
+            child:
+                Image.asset('assets/images/sakura.png', width: 80, height: 80),
+          ),
+          const SizedBox(height: 15),
+          const Text(
+            'Apaisantes',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1.2),
+          ),
+          const SizedBox(height: 5),
+          Text(
+            'Calmez votre esprit naturellement',
+            style: TextStyle(
+                color: Colors.white.withOpacity(0.7),
+                fontSize: 15,
+                fontStyle: FontStyle.italic),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPlantCard(int index) {
+    final plante = plantes[index];
+    final isFav = _favorisPlantes.contains(index);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(25),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(25),
+              border: Border.all(color: Colors.white.withOpacity(0.15)),
+            ),
+            // Utilisation de InkWell pour rendre toute la carte cliquable
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => plante['page'] as Widget),
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 90,
+                      height: 90,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            image: AssetImage(plante['photo'] as String),
+                            fit: BoxFit.cover),
                       ),
-                      title: Text(
-                        '$titre',
-                        style: const TextStyle(
-                            color: Colors.green, fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Column(
+                    ),
+                    const SizedBox(width: 15),
+                    Expanded(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            '$nomscient',
-                            style: const TextStyle(
-                                fontStyle: FontStyle.italic, fontSize: 13),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            '$description',
-                            style: const TextStyle(fontSize: 12),
-                          )
+                          Text(plante['titre'] as String,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold)),
+                          Text(plante['nomscient'] as String,
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.5),
+                                  fontSize: 12,
+                                  fontStyle: FontStyle.italic)),
+                          const SizedBox(height: 8),
+                          Text(plante['description'] as String,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  color: Colors.white.withOpacity(0.8),
+                                  fontSize: 12)),
                         ],
                       ),
-                      trailing: const Icon(Icons.arrow_forward_ios,
-                          size: 16, color: Colors.green),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => page as Widget,
-                          ),
-                        );
-                      },
                     ),
-                  );
-                },
+                    Column(
+                      children: [
+                        IconButton(
+                          icon: Icon(
+                              isFav
+                                  ? Icons.favorite_rounded
+                                  : Icons.favorite_outline_rounded,
+                              color: isFav ? Colors.redAccent : Colors.white60),
+                          onPressed: () => setState(() => isFav
+                              ? _favorisPlantes.remove(index)
+                              : _favorisPlantes.add(index)),
+                        ),
+                        const Icon(Icons.arrow_forward_ios_rounded,
+                            color: Colors.white30, size: 16),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );
