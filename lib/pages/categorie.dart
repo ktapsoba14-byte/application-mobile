@@ -1,10 +1,15 @@
+import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:application_mobile/pages/categorie/apaisante.dart';
 import 'package:application_mobile/pages/categorie/aromatique.dart';
 import 'package:application_mobile/pages/categorie/cicatrisante.dart';
 import 'package:application_mobile/pages/categorie/digestive.dart';
+import 'package:application_mobile/pages/favoris.dart';
+import 'package:application_mobile/pages/page_bienvenue.dart';
 import 'package:flutter/material.dart';
+
+// ... (gardez vos imports identiques)
 
 class Categorie extends StatefulWidget {
   const Categorie({super.key});
@@ -15,33 +20,29 @@ class Categorie extends StatefulWidget {
 
 class _CategorieState extends State<Categorie> {
   int _selectedIndex = 0;
-  final Set<int> _favorisIndices = {};
-  final categories = [
+
+  final List<Map<String, dynamic>> categories = [
     {
       "titre": "Plantes Aromatiques",
-      "description":
-          "Herbes parfumées aux multiples usages culinaires et thérapeutiques.",
+      "description": "Herbes parfumées aux multiples usages culinaires.",
       "icon": "assets/images/menthe.png",
       "page": const Aromatique(),
     },
     {
       "titre": "Plantes Digestives",
-      "description":
-          "Plantes qui facilitent la digestion et soulagent les troubles gastro-intestinaux.",
+      "description": "Facilitent la digestion et soulagent les troubles.",
       "icon": "assets/images/feuille.png",
       "page": const Digestive(),
     },
     {
       "titre": "Plantes Apaisantes",
-      "description":
-          "Plantes relaxantes qui calment le stress et favorisent le sommeil.",
+      "description": "Calment le stress et favorisent le sommeil.",
       "icon": "assets/images/sakura.png",
       "page": const Apaisante(),
     },
     {
       "titre": "Plantes Cicatrisantes",
-      "description":
-          "Plantes aux propriétes curatives pour la peau et les blessures.",
+      "description": "Propriétés curatives pour la peau et les blessures.",
       "icon": "assets/images/pousse.png",
       "page": const Cicatrisante(),
     },
@@ -56,26 +57,19 @@ class _CategorieState extends State<Categorie> {
         elevation: 0,
         leading: IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              color: Colors.white,
-            )),
+            icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                color: Colors.white)),
         title: const Text(
-          'Retour à l\'acceuil',
+          'Retour à l\'accueil',
           style: TextStyle(
-            color: Colors.white70,
-            fontSize: 16,
-            fontStyle: FontStyle.italic,
-          ),
+              color: Colors.white70, fontSize: 16, fontStyle: FontStyle.italic),
         ),
       ),
       body: Stack(
         children: [
           Positioned.fill(
-              child: Image.asset(
-            "assets/images/plante.jpeg",
-            fit: BoxFit.cover,
-          )),
+              child:
+                  Image.asset("assets/images/plante.jpeg", fit: BoxFit.cover)),
           Positioned.fill(
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
@@ -83,113 +77,120 @@ class _CategorieState extends State<Categorie> {
             ),
           ),
           SafeArea(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      "Catégories",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "Explorer les vertus par types de plante",
-                      style: TextStyle(color: Colors.white70, fontSize: 16),
-                    )
-                  ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(25.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Catégories",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold)),
+                      Text("Explorer les vertus par types de plante",
+                          style:
+                              TextStyle(color: Colors.white70, fontSize: 16)),
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                  child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                itemCount: categories.length,
-                itemBuilder: (context, index) {
-                  final cat = categories[index];
-                  final titre = cat['titre'];
-                  final description = cat['description'];
-                  final icon = cat['icon'];
-                  final page = cat['page'];
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 15),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.white.withOpacity(0.1),
-                      border: Border.all(
-                        color: Colors.white.withOpacity(0.2),
-                      ),
+                Expanded(
+                  child: GridView.builder(
+                    padding: const EdgeInsets.all(15),
+                    itemCount: categories.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                      childAspectRatio:
+                          0.82, // Ajusté pour un meilleur rendu visuel
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                        child: ListTile(
-                          contentPadding: const EdgeInsets.all(15),
-                          leading: Container(
-                            padding: const EdgeInsets.all(8),
+                    itemBuilder: (context, index) {
+                      final cat = categories[index];
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                          child: Container(
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.2),
-                              shape: BoxShape.circle,
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white.withOpacity(0.1),
+                              border: Border.all(
+                                  color: Colors.white.withOpacity(0.2)),
                             ),
-                            child: Image.asset(
-                              '$icon',
-                              width: 40,
-                            ),
-                          ),
-                          title: Text(
-                            '$titre',
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          ),
-                          subtitle: Text(
-                            '$description',
-                            style: const TextStyle(
-                                color: Colors.white70, fontSize: 13),
-                          ),
-                          trailing: const Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            color: Colors.white38,
-                            size: 18,
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => page as Widget,
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          cat['page'] as Widget),
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(12),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white.withOpacity(0.2),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child:
+                                          Image.asset(cat['icon'], width: 40),
+                                    ),
+                                    const SizedBox(height: 12),
+                                    Text(
+                                      cat['titre'],
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15),
+                                    ),
+                                    const SizedBox(height: 6),
+                                    Text(
+                                      cat['description'],
+                                      textAlign: TextAlign.center,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                          color: Colors.white70, fontSize: 11),
+                                    )
+                                  ],
+                                ),
                               ),
-                            );
-                          },
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  );
-                },
-              ))
-            ],
-          ))
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
-        backgroundColor: Color(0xFF1A1A1A),
-        selectedItemColor: Color(0xFF81C784),
+        backgroundColor: const Color(0xFF1A1A1A),
+        selectedItemColor: const Color(0xFF81C784),
         unselectedItemColor: Colors.white38,
         showSelectedLabels: false,
-        items: [
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home_filled), label: "Accueil"),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite_rounded), label: "Favoris"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings_rounded), label: "Paramètre")
+              icon: Icon(Icons.settings_rounded), label: "Paramètres")
         ],
       ),
     );
