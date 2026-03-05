@@ -3,6 +3,7 @@ import 'package:application_mobile/pages/categorie/apaisante.dart';
 import 'package:application_mobile/pages/categorie/aromatique.dart';
 import 'package:application_mobile/pages/categorie/cicatrisante.dart';
 import 'package:application_mobile/pages/categorie/digestive.dart';
+import 'package:application_mobile/pages/reglage.dart';
 import 'package:flutter/material.dart';
 // Garde tes imports de pages ici...
 import 'package:application_mobile/pages/favoris.dart';
@@ -47,18 +48,17 @@ class _CategorieState extends State<Categorie> {
 
   // 2. Logique de switch entre les pages
   Widget _getBody() {
-    switch (_selectedIndex) {
-      case 0:
-        return _buildHomeContent();
-      case 1:
-        return const PageFavoris(); // Ta page favoris
-      case 2:
-        return const Center(
-            child: Text("Paramètres", style: TextStyle(color: Colors.white)));
-      default:
-        return _buildHomeContent();
-    }
+  switch (_selectedIndex) {
+    case 0:
+      return _buildHomeContent();
+    case 1:
+      return const PageFavoris();
+    case 2:
+      return const PageReglages(); // <--- Ici !
+    default:
+      return _buildHomeContent();
   }
+}
 
   @override
   Widget build(BuildContext context) {
