@@ -1,10 +1,9 @@
 import 'dart:ui';
 import 'package:application_mobile/pages/aromatiques/lavande.dart';
 import 'package:application_mobile/pages/digestives/camomille.dart';
+import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
 
-// Importe tes pages ici
-// import 'package:application_mobile/pages/apaisantes/lavande.dart';
 
 class Apaisante extends StatefulWidget {
   const Apaisante({super.key});
@@ -22,7 +21,7 @@ class _ApaisanteState extends State<Apaisante> {
       "nomscient": "Lavandula angustifolia",
       "description": "Propriétés calmantes, relaxantes et cicatrisantes.",
       "photo": "assets/images/plante.jpeg",
-      "page": const Lavande(), // Remplace par Lavande()
+      "page": const Lavande(),
     },
     {
       "titre": "Camomille",
@@ -30,7 +29,7 @@ class _ApaisanteState extends State<Apaisante> {
       "description":
           "Idéale pour apaiser le système nerveux et faciliter le sommeil.",
       "photo": "assets/images/camomille.jpeg",
-      "page": const Camomille(), // Remplace par Camomille()
+      "page": const Camomille(),
     },
   ];
 
@@ -56,7 +55,6 @@ class _ApaisanteState extends State<Apaisante> {
       ),
       body: Stack(
         children: [
-          // Fond dégradé
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -75,7 +73,6 @@ class _ApaisanteState extends State<Apaisante> {
                     padding: const EdgeInsets.only(top: 10, bottom: 20),
                     itemCount: plantes.length,
                     itemBuilder: (context, index) {
-                      // --- AJOUT DE L'ANIMATION ---
                       return TweenAnimationBuilder<double>(
                         duration: Duration(milliseconds: 600 + (index * 200)),
                         tween: Tween(begin: 0.0, end: 1.0),
@@ -155,7 +152,6 @@ class _ApaisanteState extends State<Apaisante> {
               borderRadius: BorderRadius.circular(25),
               border: Border.all(color: Colors.white.withOpacity(0.15)),
             ),
-            // Utilisation de InkWell pour rendre toute la carte cliquable
             child: InkWell(
               onTap: () {
                 Navigator.push(
@@ -207,13 +203,21 @@ class _ApaisanteState extends State<Apaisante> {
                       children: [
                         IconButton(
                           icon: Icon(
-                              isFav
-                                  ? Icons.favorite_rounded
-                                  : Icons.favorite_outline_rounded,
-                              color: isFav ? Colors.redAccent : Colors.white60),
-                          onPressed: () => setState(() => isFav
-                              ? _favorisPlantes.remove(index)
-                              : _favorisPlantes.add(index)),
+                            FavorisManager.estDansFavoris(
+                                    plante['titre'] as String)
+                                ? Icons.favorite_rounded
+                                : Icons.favorite_outline_rounded,
+                            color: FavorisManager.estDansFavoris(
+                                    plante['titre'] as String)
+                                ? Colors.redAccent
+                                : Colors.white60,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              // On prévient le manager
+                              FavorisManager.ajouterOuRetirer(plante);
+                            });
+                          },
                         ),
                         const Icon(Icons.arrow_forward_ios_rounded,
                             color: Colors.white30, size: 16),

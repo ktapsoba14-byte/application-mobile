@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:application_mobile/pages/cicatrisantes/aloe.dart';
 
@@ -45,7 +46,6 @@ class _CicatrisanteState extends State<Cicatrisante> {
       ),
       body: Stack(
         children: [
-          // Fond avec dégradé curatif
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -55,7 +55,6 @@ class _CicatrisanteState extends State<Cicatrisante> {
               ),
             ),
           ),
-
           SafeArea(
             child: Column(
               children: [
@@ -208,14 +207,21 @@ class _CicatrisanteState extends State<Cicatrisante> {
                       children: [
                         IconButton(
                           icon: Icon(
-                            isFav
+                            FavorisManager.estDansFavoris(
+                                    plante['titre'] as String)
                                 ? Icons.favorite_rounded
                                 : Icons.favorite_outline_rounded,
-                            color: isFav ? Colors.redAccent : Colors.white60,
+                            color: FavorisManager.estDansFavoris(
+                                    plante['titre'] as String)
+                                ? Colors.redAccent
+                                : Colors.white60,
                           ),
-                          onPressed: () => setState(() => isFav
-                              ? _favorisPlantes.remove(index)
-                              : _favorisPlantes.add(index)),
+                          onPressed: () {
+                            setState(() {
+                              // On prévient le manager
+                              FavorisManager.ajouterOuRetirer(plante);
+                            });
+                          },
                         ),
                         const Icon(Icons.arrow_forward_ios_rounded,
                             color: Colors.white24, size: 16),

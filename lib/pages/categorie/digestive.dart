@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:application_mobile/pages/digestives/menthe.dart';
 import 'package:application_mobile/pages/digestives/camomille.dart';
@@ -35,8 +36,7 @@ class _DigestiveState extends State<Digestive> {
       "nomscient": "Zingiber officinale",
       "description":
           "Racine épicée aux puissantes propriétés anti-inflammatoires.",
-      "photo":
-          "assets/images/gingimbre.jpeg", // Correction orthographe image si nécessaire
+      "photo": "assets/images/gingimbre.jpeg",
       "page": const Gingembre(),
     }
   ];
@@ -63,7 +63,6 @@ class _DigestiveState extends State<Digestive> {
       ),
       body: Stack(
         children: [
-          // Fond avec dégradé riche
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -73,7 +72,6 @@ class _DigestiveState extends State<Digestive> {
               ),
             ),
           ),
-
           SafeArea(
             child: Column(
               children: [
@@ -226,14 +224,21 @@ class _DigestiveState extends State<Digestive> {
                       children: [
                         IconButton(
                           icon: Icon(
-                            isFav
+                            FavorisManager.estDansFavoris(
+                                    plante['titre'] as String)
                                 ? Icons.favorite_rounded
                                 : Icons.favorite_outline_rounded,
-                            color: isFav ? Colors.redAccent : Colors.white60,
+                            color: FavorisManager.estDansFavoris(
+                                    plante['titre'] as String)
+                                ? Colors.redAccent
+                                : Colors.white60,
                           ),
-                          onPressed: () => setState(() => isFav
-                              ? _favorisPlantes.remove(index)
-                              : _favorisPlantes.add(index)),
+                          onPressed: () {
+                            setState(() {
+                              // On prévient le manager
+                              FavorisManager.ajouterOuRetirer(plante);
+                            });
+                          },
                         ),
                         const Icon(Icons.arrow_forward_ios_rounded,
                             color: Colors.white24, size: 16),

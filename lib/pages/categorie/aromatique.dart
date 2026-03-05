@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:application_mobile/pages/aromatiques/lavande.dart';
 import 'package:application_mobile/pages/aromatiques/menthe.dart';
@@ -60,27 +61,19 @@ class _AromatiqueState extends State<Aromatique> {
       ),
       body: Stack(
         children: [
-          // 1. Fond avec dégradé profond
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [
-                  Color(0xFF1B4D3E),
-                  Color(0xFF0F261F)
-                ], // Vert aromatique plus sombre
+                colors: [Color(0xFF1B4D3E), Color(0xFF0F261F)],
               ),
             ),
           ),
-
           SafeArea(
             child: Column(
               children: [
-                // 2. Header Stylisé
                 _buildHeader(),
-
-                // 3. Liste Animée
                 Expanded(
                   child: ListView.builder(
                     padding: const EdgeInsets.only(top: 10, bottom: 20),
@@ -189,7 +182,6 @@ class _AromatiqueState extends State<Aromatique> {
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
                   children: [
-                    // Miniature Photo
                     Container(
                       width: 85,
                       height: 85,
@@ -202,7 +194,6 @@ class _AromatiqueState extends State<Aromatique> {
                       ),
                     ),
                     const SizedBox(width: 15),
-                    // Textes
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -227,19 +218,25 @@ class _AromatiqueState extends State<Aromatique> {
                         ],
                       ),
                     ),
-                    // Actions
                     Column(
                       children: [
                         IconButton(
                           icon: Icon(
-                            isFav
+                            FavorisManager.estDansFavoris(
+                                    plante['titre'] as String)
                                 ? Icons.favorite_rounded
                                 : Icons.favorite_outline_rounded,
-                            color: isFav ? Colors.redAccent : Colors.white60,
+                            color: FavorisManager.estDansFavoris(
+                                    plante['titre'] as String)
+                                ? Colors.redAccent
+                                : Colors.white60,
                           ),
-                          onPressed: () => setState(() => isFav
-                              ? _favorisPlantes.remove(index)
-                              : _favorisPlantes.add(index)),
+                          onPressed: () {
+                            setState(() {
+                              // On prévient le manager
+                              FavorisManager.ajouterOuRetirer(plante);
+                            });
+                          },
                         ),
                         const Icon(Icons.arrow_forward_ios_rounded,
                             color: Colors.white24, size: 16),
