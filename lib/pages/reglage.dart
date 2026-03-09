@@ -7,11 +7,9 @@ class PageReglages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // On force un fond sombre pour éviter le blanc par défaut
       backgroundColor: const Color(0xFF0D1F1A),
       body: Stack(
         children: [
-          // Effet de lumière diffuse en arrière-plan
           Positioned(
             top: -50,
             right: -50,
@@ -26,7 +24,6 @@ class PageReglages extends StatelessWidget {
                   filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80)),
             ),
           ),
-
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
@@ -42,7 +39,6 @@ class PageReglages extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 40),
-
                   _buildSectionTitle("SUPPORT"),
                   _buildSettingCard([
                     _buildSettingItem(
@@ -53,8 +49,7 @@ class PageReglages extends StatelessWidget {
                     _buildSettingItem(Icons.mail_outline_rounded,
                         "Contacter le support", "Une question ou un bug ?"),
                   ]),
-
-                  const Spacer(), // Pousse la version vers le bas
+                  const Spacer(),
                   const Center(
                     child: Text(
                       "Version 1.0.2",
@@ -118,9 +113,7 @@ class PageReglages extends StatelessWidget {
       ),
       trailing: const Icon(Icons.arrow_forward_ios_rounded,
           color: Colors.white24, size: 14),
-      onTap: () {
-        // Ajouter ici tes actions de navigation
-      },
+      onTap: () {},
     );
   }
 }

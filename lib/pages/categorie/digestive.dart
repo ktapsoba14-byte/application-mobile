@@ -235,7 +235,6 @@ class _DigestiveState extends State<Digestive> {
                           ),
                           onPressed: () {
                             setState(() {
-                              // On prévient le manager
                               FavorisManager.ajouterOuRetirer(plante);
                             });
                           },

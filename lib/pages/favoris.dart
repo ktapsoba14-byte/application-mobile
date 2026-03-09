@@ -18,7 +18,6 @@ class _PageFavorisState extends State<PageFavoris> {
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          // 1. Fond avec dégradé organique profond
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -28,8 +27,6 @@ class _PageFavorisState extends State<PageFavoris> {
               ),
             ),
           ),
-
-          // 2. Décoration lumineuse en arrière-plan (Blur effect)
           Positioned(
             top: -50,
             right: -50,
@@ -44,15 +41,11 @@ class _PageFavorisState extends State<PageFavoris> {
                   filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50)),
             ),
           ),
-
           SafeArea(
             child: CustomScrollView(
               physics: const BouncingScrollPhysics(),
               slivers: [
-                // AppBar stylisée
                 _buildSliverAppBar(),
-
-                // Contenu de la liste
                 favoris.isEmpty
                     ? SliverFillRemaining(child: _buildEmptyState())
                     : SliverPadding(
@@ -81,7 +74,7 @@ class _PageFavorisState extends State<PageFavoris> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Mon Herbier",
+              "Mes Favoris",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 34,
@@ -131,7 +124,6 @@ class _PageFavorisState extends State<PageFavoris> {
             ),
             child: Row(
               children: [
-                // Image avec ombre interne
                 Hero(
                   tag: 'plant-${plante['titre']}',
                   child: Container(
@@ -147,7 +139,6 @@ class _PageFavorisState extends State<PageFavoris> {
                   ),
                 ),
                 const SizedBox(width: 16),
-                // Informations
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -170,7 +161,6 @@ class _PageFavorisState extends State<PageFavoris> {
                         ),
                       ),
                       const SizedBox(height: 12),
-                      // Badge "Voir détails"
                       Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 4),
@@ -186,7 +176,6 @@ class _PageFavorisState extends State<PageFavoris> {
                     ],
                   ),
                 ),
-                // Bouton supprimer avec effet
                 IconButton(
                   icon: const Icon(Icons.favorite,
                       color: Colors.redAccent, size: 28),

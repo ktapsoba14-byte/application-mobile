@@ -5,7 +5,6 @@ import 'package:application_mobile/pages/categorie/cicatrisante.dart';
 import 'package:application_mobile/pages/categorie/digestive.dart';
 import 'package:application_mobile/pages/reglage.dart';
 import 'package:flutter/material.dart';
-// Garde tes imports de pages ici...
 import 'package:application_mobile/pages/favoris.dart';
 
 class Categorie extends StatefulWidget {
@@ -17,8 +16,6 @@ class Categorie extends StatefulWidget {
 
 class _CategorieState extends State<Categorie> {
   int _selectedIndex = 0;
-
-  // 1. Définition de tes données de catégories
   final List<Map<String, dynamic>> categories = [
     {
       "titre": "Aromatiques",
@@ -46,7 +43,6 @@ class _CategorieState extends State<Categorie> {
     },
   ];
 
-  // 2. Logique de switch entre les pages
   Widget _getBody() {
   switch (_selectedIndex) {
     case 0:
@@ -54,7 +50,7 @@ class _CategorieState extends State<Categorie> {
     case 1:
       return const PageFavoris();
     case 2:
-      return const PageReglages(); // <--- Ici !
+      return const PageReglages();
     default:
       return _buildHomeContent();
   }
@@ -64,7 +60,6 @@ class _CategorieState extends State<Categorie> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      // AppBar dynamique : on ne l'affiche que sur l'accueil
       appBar: _selectedIndex == 0
           ? AppBar(
               backgroundColor: Colors.transparent,
@@ -82,14 +77,12 @@ class _CategorieState extends State<Categorie> {
           : null,
 
       body: _getBody(),
-
-      // Dans ton fichier categorie.dart
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
             _selectedIndex =
-                index; // Cela force TOUTE la page à se mettre à jour
+                index;
           });
         },
         items: const [
@@ -103,8 +96,6 @@ class _CategorieState extends State<Categorie> {
       ),
     );
   }
-
-  // 3. Contenu de la grille (Explorer)
   Widget _buildHomeContent() {
     return Stack(
       children: [
@@ -156,7 +147,6 @@ class _CategorieState extends State<Categorie> {
     );
   }
 
-  // 4. Widget de la carte individuelle
   Widget _buildCategoryCard(Map<String, dynamic> cat) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),

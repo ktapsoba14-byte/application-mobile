@@ -218,7 +218,6 @@ class _CicatrisanteState extends State<Cicatrisante> {
                           ),
                           onPressed: () {
                             setState(() {
-                              // On prévient le manager
                               FavorisManager.ajouterOuRetirer(plante);
                             });
                           },

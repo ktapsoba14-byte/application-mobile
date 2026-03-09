@@ -4,7 +4,6 @@ import 'package:application_mobile/pages/digestives/camomille.dart';
 import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
 
-
 class Apaisante extends StatefulWidget {
   const Apaisante({super.key});
 

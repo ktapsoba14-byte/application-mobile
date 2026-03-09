@@ -233,7 +233,6 @@ class _AromatiqueState extends State<Aromatique> {
                           ),
                           onPressed: () {
                             setState(() {
-                              // On prévient le manager
                               FavorisManager.ajouterOuRetirer(plante);
                             });
                           },
