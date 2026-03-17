@@ -13,8 +13,6 @@ class Aromatique extends StatefulWidget {
 }
 
 class _AromatiqueState extends State<Aromatique> {
-  final Set<int> _favorisPlantes = {};
-
   final plantes = [
     {
       "titre": "Lavande",
@@ -80,7 +78,7 @@ class _AromatiqueState extends State<Aromatique> {
                     itemCount: plantes.length,
                     itemBuilder: (context, index) {
                       return TweenAnimationBuilder<double>(
-                        duration: Duration(milliseconds: 500 + (index * 100)),
+                        duration: Duration(milliseconds: 3000 + (index * 100)),
                         tween: Tween(begin: 0.0, end: 1.0),
                         curve: Curves.easeOutQuart,
                         builder: (context, value, child) {
@@ -159,8 +157,6 @@ class _AromatiqueState extends State<Aromatique> {
 
   Widget _buildPlantCard(int index) {
     final plante = plantes[index];
-    final isFav = _favorisPlantes.contains(index);
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       child: ClipRRect(

@@ -13,8 +13,6 @@ class Digestive extends StatefulWidget {
 }
 
 class _DigestiveState extends State<Digestive> {
-  final Set<int> _favorisPlantes = {};
-
   final plantes = [
     {
       "titre": "Camomille",
@@ -82,7 +80,7 @@ class _DigestiveState extends State<Digestive> {
                     itemCount: plantes.length,
                     itemBuilder: (context, index) {
                       return TweenAnimationBuilder<double>(
-                        duration: Duration(milliseconds: 500 + (index * 150)),
+                        duration: Duration(milliseconds: 300 + (index * 150)),
                         tween: Tween(begin: 0.0, end: 1.0),
                         curve: Curves.easeOutQuart,
                         builder: (context, value, child) {
@@ -161,8 +159,6 @@ class _DigestiveState extends State<Digestive> {
 
   Widget _buildPlantCard(int index) {
     final plante = plantes[index];
-    final isFav = _favorisPlantes.contains(index);
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       child: ClipRRect(

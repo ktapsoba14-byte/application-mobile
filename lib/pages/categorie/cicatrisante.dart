@@ -11,8 +11,6 @@ class Cicatrisante extends StatefulWidget {
 }
 
 class _CicatrisanteState extends State<Cicatrisante> {
-  final Set<int> _favorisPlantes = {};
-
   final plantes = [
     {
       "titre": "Aloe Vera",
@@ -65,7 +63,7 @@ class _CicatrisanteState extends State<Cicatrisante> {
                     itemCount: plantes.length,
                     itemBuilder: (context, index) {
                       return TweenAnimationBuilder<double>(
-                        duration: Duration(milliseconds: 500 + (index * 150)),
+                        duration: Duration(milliseconds: 3000 + (index * 150)),
                         tween: Tween(begin: 0.0, end: 1.0),
                         curve: Curves.easeOutQuart,
                         builder: (context, value, child) {
@@ -144,8 +142,6 @@ class _CicatrisanteState extends State<Cicatrisante> {
 
   Widget _buildPlantCard(int index) {
     final plante = plantes[index];
-    final isFav = _favorisPlantes.contains(index);
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       child: ClipRRect(

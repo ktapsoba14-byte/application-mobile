@@ -12,8 +12,6 @@ class Apaisante extends StatefulWidget {
 }
 
 class _ApaisanteState extends State<Apaisante> {
-  final Set<int> _favorisPlantes = {};
-
   final plantes = [
     {
       "titre": "Lavande",
@@ -73,7 +71,7 @@ class _ApaisanteState extends State<Apaisante> {
                     itemCount: plantes.length,
                     itemBuilder: (context, index) {
                       return TweenAnimationBuilder<double>(
-                        duration: Duration(milliseconds: 600 + (index * 200)),
+                        duration: Duration(milliseconds: 3000 + (index * 200)),
                         tween: Tween(begin: 0.0, end: 1.0),
                         curve: Curves.easeOutQuart,
                         builder: (context, value, child) {
@@ -85,7 +83,7 @@ class _ApaisanteState extends State<Apaisante> {
                             ),
                           );
                         },
-                        child: _buildPlantCard(index),
+                        child: _buildPlantesCartes(index),
                       );
                     },
                   ),
@@ -135,10 +133,8 @@ class _ApaisanteState extends State<Apaisante> {
     );
   }
 
-  Widget _buildPlantCard(int index) {
+  Widget _buildPlantesCartes(int index) {
     final plante = plantes[index];
-    final isFav = _favorisPlantes.contains(index);
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       child: ClipRRect(
@@ -213,7 +209,6 @@ class _ApaisanteState extends State<Apaisante> {
                           ),
                           onPressed: () {
                             setState(() {
-                              // On prévient le manager
                               FavorisManager.ajouterOuRetirer(plante);
                             });
                           },
