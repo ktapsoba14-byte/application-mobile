@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Menthe extends StatelessWidget {
-  const Menthe({super.key});
+class Moringa extends StatelessWidget {
+  const Moringa({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,10 @@ class Menthe extends StatelessWidget {
                 icon: Icons.healing,
                 accentColor: Colors.green,
                 items: [
-                  "Nausées",
-                  "aérophagie",
-                  "maux de tête",
-                  "mauvaise haleine"
+                  "Réduction du stress oxydatif",
+                  "amélioration du sommeil",
+                  "régulation de l'humeur",
+                  "fatigue nerveuse"
                 ],
               ),
               _buildInfoCard(
@@ -46,9 +46,9 @@ class Menthe extends StatelessWidget {
                 icon: Icons.biotech,
                 accentColor: Colors.blueGrey,
                 items: [
-                  "Famille : Lamiaceae",
-                  "Groupes chimiques : Huile essentielle (menthol, menthone), tanins et flavonoïdes.",
-                  "Parties utilisées : Feuilles et sommités fleuries."
+                  "Famille : Moringaceae",
+                  "Groupes chimiques : Isothiocyanates, flavonoïdes (quercétine, kaempférol), acides aminés essentiels (tryptophane) et vitamines (A, C, E).",
+                  "Parties utilisées : Feuilles (en infusion ou poudre) et fleurs."
                 ],
               ),
               _buildWarningCard(),
@@ -77,7 +77,7 @@ class Menthe extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.asset(
-                'assets/images/menthe.jpeg',
+                'assets/images/moringa.jpeg',
                 width: double.infinity,
                 height: 220,
                 fit: BoxFit.cover,
@@ -99,7 +99,7 @@ class Menthe extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        "PLANTES DIGESTIVES",
+                        "PLANTES APAISANTES",
                         style: TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
@@ -109,21 +109,21 @@ class Menthe extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "Menthe",
+                    "Moringa",
                     style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text("Mentha x piperita",
+                  Text("Moringa oleifera",
                       style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontSize: 18,
                           color: Colors.blueGrey)),
                   const SizedBox(height: 15),
                   Text(
-                    "Description : Plante herbacée très odorante à tiges carrées, poussant facilement dans les zones humides ou irriguées.",
+                    "Description : Petit arbre à croissance rapide, au feuillage léger et aux fleurs blanches parfumées.",
                     style: TextStyle(fontSize: 15, height: 1.4),
                   ),
                 ],
@@ -228,7 +228,7 @@ class Menthe extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              "Reflux gastro-œsophagien (le menthol détend le sphincter de l'œsophage), inflammation de la vésicule biliaire et enfants de moins de 4 ans (risque de spasme laryngé avec le menthol pur).",
+              "Racines et écorces déconseillées pendant la grossesse (effets abortifs potentiels). Prudence en cas de traitement anticoagulant.",
               style: TextStyle(
                   color: Colors.black87,
                   fontSize: 14,

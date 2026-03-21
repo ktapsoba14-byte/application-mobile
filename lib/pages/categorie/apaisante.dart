@@ -1,4 +1,9 @@
 import 'dart:ui';
+import 'package:application_mobile/pages/apaisantes/baobab.dart';
+import 'package:application_mobile/pages/apaisantes/basilic.dart';
+import 'package:application_mobile/pages/apaisantes/lippia.dart';
+import 'package:application_mobile/pages/apaisantes/moringa.dart';
+import 'package:application_mobile/pages/apaisantes/neem.dart';
 import 'package:application_mobile/pages/aromatiques/lavande.dart';
 import 'package:application_mobile/pages/digestives/camomille.dart';
 import 'package:application_mobile/pages/favoris_manager.dart';
@@ -27,6 +32,46 @@ class _ApaisanteState extends State<Apaisante> {
           "Idéale pour apaiser le système nerveux et faciliter le sommeil.",
       "photo": "assets/images/camomille.jpeg",
       "page": const Camomille(),
+    },
+    {
+      "titre": "Baobab",
+      "nomscient": "Adansonia digitata",
+      "description":
+          "Arbre massif emblématique au tronc énorme et aux branches ressemblant à des racines.",
+      "photo": "assets/images/baobab.jpeg",
+      "page": const Baobab(),
+    },
+    {
+      "titre": "Neem",
+      "nomscient": "Azadirachta indica",
+      "description":
+          "Arbre robuste à feuilles persistantes, très commun dans les rues de Ouagadougou pour son ombre.",
+      "photo": "assets/images/neem.jpeg",
+      "page": const Neem(),
+    },
+    {
+      "titre": "Lippia",
+      "nomscient": "Lippia chevalieri",
+      "description":
+          "Arbrisseau sauvage des savanes à l'odeur citronnée ou camphrée très marquée.",
+      "photo": "assets/images/lippia.jpeg",
+      "page": const Lippia(),
+    },
+    {
+      "titre": "Basilic Africain",
+      "nomscient": "Ocimum gratissimum",
+      "description":
+          "Plante herbacée très aromatique, pouvant atteindre 1 à 2 mètres, aux tiges dressées et feuilles opposées.",
+      "photo": "assets/images/basilic.jpeg",
+      "page": const Basilic(),
+    },
+    {
+      "titre": "Moringa",
+      "nomscient": "Moringa oleifera",
+      "description":
+          "Petit arbre à croissance rapide, au feuillage léger et aux fleurs blanches parfumées.",
+      "photo": "assets/images/moringa.jpeg",
+      "page": const Moringa(),
     },
   ];
 

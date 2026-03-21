@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Menthe extends StatelessWidget {
-  const Menthe({super.key});
+class Neem extends StatelessWidget {
+  const Neem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,9 @@ class Menthe extends StatelessWidget {
                 icon: Icons.healing,
                 accentColor: Colors.green,
                 items: [
-                  "Nausées",
-                  "aérophagie",
-                  "maux de tête",
-                  "mauvaise haleine"
+                  "En usage externe (bains)",
+                  "apaise les irritations cutanées nerveuses",
+                  "parfois utilisé pour son effet sédatif léger",
                 ],
               ),
               _buildInfoCard(
@@ -46,9 +45,9 @@ class Menthe extends StatelessWidget {
                 icon: Icons.biotech,
                 accentColor: Colors.blueGrey,
                 items: [
-                  "Famille : Lamiaceae",
-                  "Groupes chimiques : Huile essentielle (menthol, menthone), tanins et flavonoïdes.",
-                  "Parties utilisées : Feuilles et sommités fleuries."
+                  "Famille : Meliaceae",
+                  "Groupes chimiques : Limonoïdes (azadirachtine, nimbin), terpénoïdes et stérols.",
+                  "Parties utilisées : Feuilles (en bain ou décoction légère)."
                 ],
               ),
               _buildWarningCard(),
@@ -77,7 +76,7 @@ class Menthe extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.asset(
-                'assets/images/menthe.jpeg',
+                'assets/images/neem.jpeg',
                 width: double.infinity,
                 height: 220,
                 fit: BoxFit.cover,
@@ -99,7 +98,7 @@ class Menthe extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        "PLANTES DIGESTIVES",
+                        "PLANTES APAISANTES",
                         style: TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
@@ -109,21 +108,21 @@ class Menthe extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "Menthe",
+                    "Neem",
                     style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text("Mentha x piperita",
+                  Text("Azadirachta indica",
                       style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontSize: 18,
                           color: Colors.blueGrey)),
                   const SizedBox(height: 15),
                   Text(
-                    "Description : Plante herbacée très odorante à tiges carrées, poussant facilement dans les zones humides ou irriguées.",
+                    "Arbre robuste à feuilles persistantes, très commun dans les rues de Ouagadougou pour son ombre.",
                     style: TextStyle(fontSize: 15, height: 1.4),
                   ),
                 ],
@@ -228,7 +227,7 @@ class Menthe extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              "Reflux gastro-œsophagien (le menthol détend le sphincter de l'œsophage), inflammation de la vésicule biliaire et enfants de moins de 4 ans (risque de spasme laryngé avec le menthol pur).",
+              "L'huile de neem et les graines sont toxiques par ingestion. Les feuilles ne doivent pas être consommées sur de longues périodes (risque pour les reins et le foie). Strictement interdit aux femmes enceintes et enfants.",
               style: TextStyle(
                   color: Colors.black87,
                   fontSize: 14,

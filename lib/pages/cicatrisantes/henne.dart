@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Menthe extends StatelessWidget {
-  const Menthe({super.key});
+class Henne extends StatelessWidget {
+  const Henne({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class Menthe extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
-          "Catalogue des plantes",
+          'Catalogue des Plantes',
           style: TextStyle(
             color: Colors.green,
             fontStyle: FontStyle.italic,
@@ -31,24 +31,23 @@ class Menthe extends StatelessWidget {
             children: [
               _buildHeaderCard(),
               _buildInfoCard(
-                titre: "Indications Reconnues",
+                title: "Indications Reconnues",
                 icon: Icons.healing,
                 accentColor: Colors.green,
                 items: [
-                  "Nausées",
-                  "aérophagie",
-                  "maux de tête",
-                  "mauvaise haleine"
+                  "Cicatrisation des crevasses aux pieds ou aux mains",
+                  "raitement des mycoses cutanées (antifongique)",
+                  "renforcement de l'épiderme",
                 ],
               ),
               _buildInfoCard(
-                titre: "Détails Botaniques",
+                title: "Détails Botaniques",
                 icon: Icons.biotech,
                 accentColor: Colors.blueGrey,
                 items: [
-                  "Famille : Lamiaceae",
-                  "Groupes chimiques : Huile essentielle (menthol, menthone), tanins et flavonoïdes.",
-                  "Parties utilisées : Feuilles et sommités fleuries."
+                  "Famille : Lythraceae",
+                  "Groupes chimiques : Naphtoquinones (lawsone), tanins, flavonoïdes et coumarines.",
+                  "Parties utilisées : Feuilles séchées et broyées en pâte.",
                 ],
               ),
               _buildWarningCard(),
@@ -73,13 +72,14 @@ class Menthe extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Note : Remplace par ton image réelle ou une icône par défaut
             ClipRRect(
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.asset(
-                'assets/images/menthe.jpeg',
+                'assets/images/henne.jpeg', // Le chemin vers votre image
                 width: double.infinity,
-                height: 220,
+                height: 220, // Hauteur ajustée pour un meilleur rendu
                 fit: BoxFit.cover,
               ),
             ),
@@ -90,40 +90,29 @@ class Menthe extends StatelessWidget {
                 children: [
                   const Row(
                     children: [
-                      Icon(
-                        Icons.label_important,
-                        color: Colors.green,
-                        size: 20,
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        "PLANTES DIGESTIVES",
-                        style: TextStyle(
-                            color: Colors.green, fontWeight: FontWeight.bold),
-                      ),
+                      Icon(Icons.label_important,
+                          color: Colors.green, size: 20),
+                      SizedBox(width: 8),
+                      Text("PLANTE CICATRISANTE",
+                          style: TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold)),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Menthe",
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text("Mentha x piperita",
+                  const SizedBox(height: 10),
+                  const Text("Henné",
+                      style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold)),
+                  const Text("Lawsonia inermis",
                       style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontSize: 18,
                           color: Colors.blueGrey)),
                   const SizedBox(height: 15),
-                  Text(
-                    "Description : Plante herbacée très odorante à tiges carrées, poussant facilement dans les zones humides ou irriguées.",
+                  const Text(
+                    "Description : Arbuste dont les feuilles produisent un colorant rouge-orangé, très commun dans le Sahel.",
                     style: TextStyle(fontSize: 15, height: 1.4),
                   ),
                 ],
@@ -136,10 +125,13 @@ class Menthe extends StatelessWidget {
   }
 
   Widget _buildInfoCard(
-      {required String titre,
-      required IconData icon,
-      required Color accentColor,
-      required List<String> items}) {
+      {
+        required String title,
+        required IconData icon,
+        required Color accentColor,
+        required List<String> items
+      }
+    ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Container(
@@ -156,21 +148,13 @@ class Menthe extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(
-                  icon,
-                  color: accentColor,
-                  size: 28,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  titre,
-                  style: TextStyle(
-                      color: accentColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
+                Icon(icon, color: accentColor, size: 28),
+                const SizedBox(width: 10),
+                Text(title,
+                    style: TextStyle(
+                        color: accentColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold)),
               ],
             ),
             const SizedBox(height: 15),
@@ -180,22 +164,16 @@ class Menthe extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 6),
-                        child: Icon(
-                          Icons.circle,
-                          color: accentColor,
-                          size: 7,
-                        ),
-                      ),
+                          padding: const EdgeInsets.only(top: 6),
+                          child:
+                              Icon(Icons.circle, color: accentColor, size: 7)),
                       const SizedBox(width: 12),
                       Expanded(
-                          child: Text(
-                        text,
-                        style: TextStyle(fontSize: 15),
-                      )),
+                          child:
+                              Text(text, style: const TextStyle(fontSize: 15))),
                     ],
                   ),
-                ))
+                )),
           ],
         ),
       ),
@@ -228,7 +206,7 @@ class Menthe extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              "Reflux gastro-œsophagien (le menthol détend le sphincter de l'œsophage), inflammation de la vésicule biliaire et enfants de moins de 4 ans (risque de spasme laryngé avec le menthol pur).",
+              "Personnes souffrant d'un déficit en G6PD (favisme), car la lawsone peut provoquer une hémolyse. Éviter sur les plaies ouvertes si le henné contient des additifs chimiques (type PPD).",
               style: TextStyle(
                   color: Colors.black87,
                   fontSize: 14,

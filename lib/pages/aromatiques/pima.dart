@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Menthe extends StatelessWidget {
-  const Menthe({super.key});
+class Pima extends StatelessWidget {
+  const Pima({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,9 @@ class Menthe extends StatelessWidget {
                 icon: Icons.healing,
                 accentColor: Colors.green,
                 items: [
-                  "Nausées",
-                  "aérophagie",
-                  "maux de tête",
-                  "mauvaise haleine"
+                  "Stimulant circulatoire",
+                  "facilite la digestion gastrique à petite dose",
+                  "soulagement des douleurs articulaires",
                 ],
               ),
               _buildInfoCard(
@@ -46,9 +45,9 @@ class Menthe extends StatelessWidget {
                 icon: Icons.biotech,
                 accentColor: Colors.blueGrey,
                 items: [
-                  "Famille : Lamiaceae",
-                  "Groupes chimiques : Huile essentielle (menthol, menthone), tanins et flavonoïdes.",
-                  "Parties utilisées : Feuilles et sommités fleuries."
+                  "Famille : Solanaceae",
+                  "Groupes chimiques : Alcaloïdes (capsaïcine), caroténoïdes et vitamine C.",
+                  "Parties utilisées : Fruits mûrs séchés ou frais.",
                 ],
               ),
               _buildWarningCard(),
@@ -77,7 +76,7 @@ class Menthe extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.asset(
-                'assets/images/menthe.jpeg',
+                'assets/images/pima.jpeg',
                 width: double.infinity,
                 height: 220,
                 fit: BoxFit.cover,
@@ -99,7 +98,7 @@ class Menthe extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        "PLANTES DIGESTIVES",
+                        "PLANTES AROMATIQUES",
                         style: TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
@@ -109,21 +108,21 @@ class Menthe extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "Menthe",
+                    "Petit Piment",
                     style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text("Mentha x piperita",
+                  Text("Capsicum frutescens",
                       style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontSize: 18,
                           color: Colors.blueGrey)),
                   const SizedBox(height: 15),
                   Text(
-                    "Description : Plante herbacée très odorante à tiges carrées, poussant facilement dans les zones humides ou irriguées.",
+                    "Description : Petit arbuste produisant de petits fruits rouges dressés, extrêmement piquants.",
                     style: TextStyle(fontSize: 15, height: 1.4),
                   ),
                 ],
@@ -228,7 +227,7 @@ class Menthe extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              "Reflux gastro-œsophagien (le menthol détend le sphincter de l'œsophage), inflammation de la vésicule biliaire et enfants de moins de 4 ans (risque de spasme laryngé avec le menthol pur).",
+              "Ulcères de l'estomac actifs, hémorroïdes irritées et contact direct avec les yeux ou les muqueuses (très irritant).",
               style: TextStyle(
                   color: Colors.black87,
                   fontSize: 14,

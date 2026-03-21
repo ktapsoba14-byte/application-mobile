@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Menthe extends StatelessWidget {
-  const Menthe({super.key});
+class Baobab extends StatelessWidget {
+  const Baobab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,8 @@ class Menthe extends StatelessWidget {
                 icon: Icons.healing,
                 accentColor: Colors.green,
                 items: [
-                  "Nausées",
-                  "aérophagie",
-                  "maux de tête",
-                  "mauvaise haleine"
+                  "relaxation musculaire et nerveuse",
+                  "lutter contre la fatigue liée au stress",
                 ],
               ),
               _buildInfoCard(
@@ -46,9 +44,9 @@ class Menthe extends StatelessWidget {
                 icon: Icons.biotech,
                 accentColor: Colors.blueGrey,
                 items: [
-                  "Famille : Lamiaceae",
-                  "Groupes chimiques : Huile essentielle (menthol, menthone), tanins et flavonoïdes.",
-                  "Parties utilisées : Feuilles et sommités fleuries."
+                  "Famille : Malvaceae",
+                  "Groupes chimiques : Acides organiques (acide ascorbique), minéraux (calcium, magnésium), glucides et fibres (pectines).",
+                  "Parties utilisées : Pulpe du fruit (bouye) et feuilles (lalo)."
                 ],
               ),
               _buildWarningCard(),
@@ -77,7 +75,7 @@ class Menthe extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.asset(
-                'assets/images/menthe.jpeg',
+                'assets/images/baobab.jpeg',
                 width: double.infinity,
                 height: 220,
                 fit: BoxFit.cover,
@@ -99,7 +97,7 @@ class Menthe extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        "PLANTES DIGESTIVES",
+                        "PLANTES APAISANTES",
                         style: TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
@@ -109,21 +107,21 @@ class Menthe extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "Menthe",
+                    "Baobab",
                     style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text("Mentha x piperita",
+                  Text("Adansonia digitata",
                       style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontSize: 18,
                           color: Colors.blueGrey)),
                   const SizedBox(height: 15),
                   Text(
-                    "Description : Plante herbacée très odorante à tiges carrées, poussant facilement dans les zones humides ou irriguées.",
+                    "Arbre massif emblématique au tronc énorme et aux branches ressemblant à des racines.",
                     style: TextStyle(fontSize: 15, height: 1.4),
                   ),
                 ],
@@ -228,7 +226,7 @@ class Menthe extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              "Reflux gastro-œsophagien (le menthol détend le sphincter de l'œsophage), inflammation de la vésicule biliaire et enfants de moins de 4 ans (risque de spasme laryngé avec le menthol pur).",
+              "Prudence en cas d'insuffisance rénale sévère en raison de la haute teneur en potassium.",
               style: TextStyle(
                   color: Colors.black87,
                   fontSize: 14,

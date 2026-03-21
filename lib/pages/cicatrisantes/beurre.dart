@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Menthe extends StatelessWidget {
-  const Menthe({super.key});
+class Beurre extends StatelessWidget {
+  const Beurre({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,11 @@ class Menthe extends StatelessWidget {
                 icon: Icons.healing,
                 accentColor: Colors.green,
                 items: [
-                  "Nausées",
-                  "aérophagie",
-                  "maux de tête",
-                  "mauvaise haleine"
+                  "Cicatrisation des gerçures",
+                  "brûlures légères",
+                  "érythèmes fessiers des nourrissons",
+                  "vergetures",
+                  "protection de la barrière cutanée."
                 ],
               ),
               _buildInfoCard(
@@ -46,9 +47,9 @@ class Menthe extends StatelessWidget {
                 icon: Icons.biotech,
                 accentColor: Colors.blueGrey,
                 items: [
-                  "Famille : Lamiaceae",
-                  "Groupes chimiques : Huile essentielle (menthol, menthone), tanins et flavonoïdes.",
-                  "Parties utilisées : Feuilles et sommités fleuries."
+                  "Famille : Sapotaceae",
+                  "Groupes chimiques : Acides gras (oléique, stéarique), insaponifiables (karitène, alcools triterpéniques), vitamines A, E et F.",
+                  "Parties utilisées : Beurre extrait de l'amande (noix).",
                 ],
               ),
               _buildWarningCard(),
@@ -77,7 +78,7 @@ class Menthe extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.asset(
-                'assets/images/menthe.jpeg',
+                'assets/images/beurre.jpeg',
                 width: double.infinity,
                 height: 220,
                 fit: BoxFit.cover,
@@ -99,7 +100,7 @@ class Menthe extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        "PLANTES DIGESTIVES",
+                        "PLANTES CICATRISANTES",
                         style: TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
@@ -109,21 +110,21 @@ class Menthe extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "Menthe",
+                    "Beurre de Karité (L'Arbre à beurre)",
                     style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text("Mentha x piperita",
+                  Text("Vitellaria paradoxa",
                       style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontSize: 18,
                           color: Colors.blueGrey)),
                   const SizedBox(height: 15),
                   Text(
-                    "Description : Plante herbacée très odorante à tiges carrées, poussant facilement dans les zones humides ou irriguées.",
+                    "Description : Arbre emblématique des savanes soudanaises, produisant des noix dont on extrait une matière grasse solide à température ambiante.",
                     style: TextStyle(fontSize: 15, height: 1.4),
                   ),
                 ],
@@ -228,7 +229,7 @@ class Menthe extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              "Reflux gastro-œsophagien (le menthol détend le sphincter de l'œsophage), inflammation de la vésicule biliaire et enfants de moins de 4 ans (risque de spasme laryngé avec le menthol pur).",
+              "Aucune contre-indication majeure connue. Très bien toléré, même par les peaux sensibles.",
               style: TextStyle(
                   color: Colors.black87,
                   fontSize: 14,

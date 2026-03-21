@@ -1,4 +1,9 @@
 import 'dart:ui';
+import 'package:application_mobile/pages/aromatiques/citroneille.dart';
+import 'package:application_mobile/pages/aromatiques/the.dart';
+import 'package:application_mobile/pages/aromatiques/pima.dart';
+import 'package:application_mobile/pages/aromatiques/ail.dart';
+import 'package:application_mobile/pages/aromatiques/yulin.dart';
 import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:application_mobile/pages/aromatiques/lavande.dart';
@@ -34,7 +39,47 @@ class _AromatiqueState extends State<Aromatique> {
       "description": "Stimulante aux propriétés antioxydantes.",
       "photo": "assets/images/romarin.jpeg",
       "page": const Romarin(),
-    }
+    },
+    {
+      "titre": "Citronnelle",
+      "nomscient": "Cymbopogon citratus",
+      "description":
+          "Grande herbe vivace poussant en touffes denses, aux feuilles rubanées de couleur vert bleuté, dégageant une odeur de citron très fraîche.",
+      "photo": "assets/images/citroneille.png",
+      "page": const Citroneille(),
+    },
+    {
+      "titre": "Ail",
+      "nomscient": "Allium sativum",
+      "description":
+          "Plante bulbeuse dont l'odeur soufrée est très puissante une fois le bulbe écrasé.",
+      "photo": "assets/images/ail.jpeg",
+      "page": const Ail(),
+    },
+    {
+      "titre": "Thé de Gambie",
+      "nomscient": "Lippia multiflora",
+      "description":
+          "Arbrisseau sauvage des savanes guinéennes et soudaniennes, aux feuilles rugueuses et très parfumées (odeur camphrée et citronnée).",
+      "photo": "assets/images/the.jpeg",
+      "page": const The(),
+    },
+    {
+      "titre": "Yulin-gnuuga",
+      "nomscient": "Ocimum basilicum",
+      "description":
+          "Petite plante annuelle aromatique sous-arbrisseau ou arbuste avec des tiges ramifiées quadrangulaires.",
+      "photo": "assets/images/yullin.png",
+      "page": const Yulin(),
+    },
+    {
+      "titre": "Petit Piment",
+      "nomscient": "Capsicum frutescens",
+      "description":
+          "Petit arbuste produisant de petits fruits rouges dressés, extrêmement piquants.",
+      "photo": "assets/images/pima.jpeg",
+      "page": const Pima(),
+    },
   ];
 
   @override

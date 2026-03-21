@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Menthe extends StatelessWidget {
-  const Menthe({super.key});
+class Basilic extends StatelessWidget {
+  const Basilic({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,10 @@ class Menthe extends StatelessWidget {
                 icon: Icons.healing,
                 accentColor: Colors.green,
                 items: [
-                  "Nausées",
-                  "aérophagie",
-                  "maux de tête",
-                  "mauvaise haleine"
+                  "Troubles digestifs (ballonnements, coliques)",
+                  "rhumes et toux",
+                  "antiseptique buccal",
+                  "régulation de la fièvre légère"
                 ],
               ),
               _buildInfoCard(
@@ -47,8 +47,8 @@ class Menthe extends StatelessWidget {
                 accentColor: Colors.blueGrey,
                 items: [
                   "Famille : Lamiaceae",
-                  "Groupes chimiques : Huile essentielle (menthol, menthone), tanins et flavonoïdes.",
-                  "Parties utilisées : Feuilles et sommités fleuries."
+                  "Groupes chimiques : Huiles essentielles (thymol, eugénol), flavonoïdes et acides phénoliques.",
+                  "Parties utilisées : Feuilles fraîches ou séchées, sommités fleuries."
                 ],
               ),
               _buildWarningCard(),
@@ -77,7 +77,7 @@ class Menthe extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(15)),
               child: Image.asset(
-                'assets/images/menthe.jpeg',
+                'assets/images/basilic.jpeg',
                 width: double.infinity,
                 height: 220,
                 fit: BoxFit.cover,
@@ -99,7 +99,7 @@ class Menthe extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        "PLANTES DIGESTIVES",
+                        "PLANTES APAISANTES",
                         style: TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),
@@ -109,21 +109,21 @@ class Menthe extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    "Menthe",
+                    "Basilic Africain",
                     style: TextStyle(
                       fontStyle: FontStyle.italic,
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text("Mentha x piperita",
+                  Text("Ocimum gratissimum",
                       style: TextStyle(
                           fontStyle: FontStyle.italic,
                           fontSize: 18,
                           color: Colors.blueGrey)),
                   const SizedBox(height: 15),
                   Text(
-                    "Description : Plante herbacée très odorante à tiges carrées, poussant facilement dans les zones humides ou irriguées.",
+                    "Description : Plante herbacée très aromatique, pouvant atteindre 1 à 2 mètres, aux tiges dressées et feuilles opposées.",
                     style: TextStyle(fontSize: 15, height: 1.4),
                   ),
                 ],
@@ -228,7 +228,7 @@ class Menthe extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              "Reflux gastro-œsophagien (le menthol détend le sphincter de l'œsophage), inflammation de la vésicule biliaire et enfants de moins de 4 ans (risque de spasme laryngé avec le menthol pur).",
+              "Déconseillé aux femmes enceintes (huile essentielle puissante) et aux enfants de moins de 6 ans en usage thérapeutique concentré.",
               style: TextStyle(
                   color: Colors.black87,
                   fontSize: 14,

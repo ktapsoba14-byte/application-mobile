@@ -7,445 +7,234 @@ class Gingembre extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Retour aux Plantes Digestives',
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.green),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: const Text(
+          "Catalogue des plantes",
           style: TextStyle(
             color: Colors.green,
             fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),
       body: Container(
         width: double.infinity,
-        height: double.infinity,
         color: Colors.green.shade50,
         child: SingleChildScrollView(
+          padding: const EdgeInsets.only(bottom: 30),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 10,
-                        )
-                      ]),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(15)),
-                        child: Image.asset(
-                          'assets/images/gingimbre.jpeg',
-                          width: double.infinity,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Row(
-                              children: [
-                                Icon(Icons.eco, color: Colors.green, size: 20),
-                                SizedBox(width: 5),
-                                Text(
-                                  "PLANTE MÉDICINALE",
-                                  style: TextStyle(
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            const Text(
-                              "Gingembre",
-                              style: TextStyle(
-                                color: Colors.green,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const Text(
-                              "Zingiber officinale",
-                              style: TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontSize: 18,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            const Text(
-                              "Racine épicée aux puissantes propriétés anti-inflammatoires.",
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+              _buildHeaderCard(),
+              _buildInfoCard(
+                titre: "Indications Reconnues",
+                icon: Icons.healing,
+                accentColor: Colors.green,
+                items: [
+                  "Dyspepsie (digestion difficile)",
+                  "nausées (mal des transports ou post-opératoires)",
+                  "manque d'appétit",
+                  "gastrites légères"
+                ],
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Container(
-                  width: 450,
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.check_circle_outline,
-                            color: Colors.green,
-                            size: 30,
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            "Vertus et Bienfaits",
-                            style: TextStyle(color: Colors.green, fontSize: 25),
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(Icons.circle, color: Colors.green, size: 10),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Text(
-                                "Soulage les nausées et vomissements (grossesse, mal des transports)",
-                                style: TextStyle(fontSize: 16)),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(Icons.circle, color: Colors.green, size: 10),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Text("Puissant anti-inflammatoire naturel",
-                                style: TextStyle(fontSize: 16)),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(Icons.circle, color: Colors.green, size: 10),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Text(
-                                "Aide à réduire les douleurs articulaires",
-                                style: TextStyle(fontSize: 16)),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(Icons.circle, color: Colors.green, size: 10),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Text(
-                              "Stimule la digestion",
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(Icons.circle, color: Colors.green, size: 10),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Text("Renforce le système immunitaire",
-                                style: TextStyle(fontSize: 16)),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(Icons.circle, color: Colors.green, size: 10),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Text(
-                                "Propriétés antivirales et antibactériennes",
-                                style: TextStyle(fontSize: 16)),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(Icons.circle, color: Colors.green, size: 10),
-                          SizedBox(width: 10),
-                          Expanded(
-                            child: Text("Améliore la circulation sanguine",
-                                style: TextStyle(fontSize: 16)),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+              _buildInfoCard(
+                titre: "Détails Botaniques",
+                icon: Icons.biotech,
+                accentColor: Colors.blueGrey,
+                items: [
+                  "Famille : Zingiberaceae",
+                  "Groupes chimiques : Oléorésines (gingérols, shogaols), huiles essentielles (zingibérène) et amidon.",
+                  "Parties utilisées : Rhizome (tige souterraine)."
+                ],
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Container(
-                  width: 450,
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.info_outline,
-                            color: Colors.blue,
-                            size: 30,
-                          ),
-                          Text(
-                            "Mode d'utilisation",
-                            style: TextStyle(color: Colors.blue, fontSize: 25),
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: Colors.blue,
-                            size: 10,
-                          ),
-                          Expanded(
-                              child: Text(
-                            "Infusion : râper 1-2 cm de racine fraîche dans de l'eau chaude",
-                            style: TextStyle(fontSize: 15),
-                          )),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: Colors.blue,
-                            size: 10,
-                          ),
-                          Expanded(
-                              child: Text(
-                            "Jus : ajouter du gingembre frais aux smoothies",
-                            style: TextStyle(fontSize: 15),
-                          )),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: Colors.blue,
-                            size: 10,
-                          ),
-                          Expanded(
-                              child: Text(
-                            "Cuisine : utiliser frais, en poudre ou confit",
-                            style: TextStyle(fontSize: 15),
-                          )),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: Colors.blue,
-                            size: 10,
-                          ),
-                          Expanded(
-                              child: Text(
-                            "Gélules : suivre les recommandations du fabricant",
-                            style: TextStyle(fontSize: 15),
-                          )),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Container(
-                  width: 450,
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: Colors.orange.shade50,
-                    borderRadius: BorderRadius.circular(15),
-                    border: Border.all(color: Colors.orange, width: 2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.warning_amber_rounded,
-                            color: Colors.deepOrange,
-                            size: 30,
-                          ),
-                          SizedBox(width: 10),
-                          Expanded(
-                              child: Text(
-                            "Precautions d'Emploi",
-                            style: TextStyle(
-                                color: Colors.deepOrange,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold),
-                          )),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            size: 10,
-                            color: Colors.deepOrange,
-                          ),
-                          Expanded(
-                              child: Text(
-                            "Peut interagir avec les anticoagulants",
-                            style: TextStyle(fontSize: 15),
-                          ))
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            size: 10,
-                            color: Colors.deepOrange,
-                          ),
-                          Expanded(
-                              child: Text(
-                            "À consommer avec modération en cas de calculs biliaires",
-                            style: TextStyle(fontSize: 15),
-                          ))
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            size: 10,
-                            color: Colors.deepOrange,
-                          ),
-                          Expanded(
-                              child: Text(
-                            "Éviter les fortes doses avant une chirurgie",
-                            style: TextStyle(fontSize: 15),
-                          ))
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            size: 10,
-                            color: Colors.deepOrange,
-                          ),
-                          Expanded(
-                              child: Text(
-                            "Consulter un médecin pendant la grossesse (doses thérapeutiques)",
-                            style: TextStyle(fontSize: 15),
-                          ))
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      Container(
-                        padding: const EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                            color: Colors.orange,
-                            width: 2,
-                          ),
-                        ),
-                        child: RichText(
-                          text: TextSpan(
-                            style: const TextStyle(
-                              color: Colors.black87,
-                              fontSize: 14,
-                              height: 1.4,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: "Important : ",
-                                style: TextStyle(
-                                  color: Colors.orange.shade900,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const TextSpan(
-                                text:
-                                    "Ces informations sont fournies à titre éducatif. Consultez toujours un professionnel de santé avant d'utiliser des plantes médicinales, surtout en cas de grossesse, allaitement ou traitement médical en cours.",
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              )
+              _buildWarningCard(),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderCard() {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10)
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(15)),
+              child: Image.asset(
+                'assets/images/gingimbre.jpeg',
+                width: double.infinity,
+                height: 220,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.label_important,
+                        color: Colors.green,
+                        size: 20,
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        "PLANTES DIGESTIVES",
+                        style: TextStyle(
+                            color: Colors.green, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Gingembre",
+                    style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text("Zingiber officinale",
+                      style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontSize: 18,
+                          color: Colors.blueGrey)),
+                  const SizedBox(height: 15),
+                  Text(
+                    "Description : Plante vivace dont seule la partie souterraine charnue est utilisée en phytothérapie.",
+                    style: TextStyle(fontSize: 15, height: 1.4),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfoCard(
+      {required String titre,
+      required IconData icon,
+      required Color accentColor,
+      required List<String> items}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 8)
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  icon,
+                  color: accentColor,
+                  size: 28,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  titre,
+                  style: TextStyle(
+                      color: accentColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+            ...items.map((text) => Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 6),
+                        child: Icon(
+                          Icons.circle,
+                          color: accentColor,
+                          size: 7,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                          child: Text(
+                        text,
+                        style: TextStyle(fontSize: 15),
+                      )),
+                    ],
+                  ),
+                ))
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWarningCard() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.red.shade50,
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(color: Colors.red.shade200, width: 1.5),
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Icon(Icons.warning_amber_rounded,
+                    color: Colors.red.shade800, size: 28),
+                const SizedBox(width: 10),
+                Text("Contre-indications",
+                    style: TextStyle(
+                        color: Colors.red.shade800,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold)),
+              ],
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              "Calculs biliaires (car il stimule la bile), avant une chirurgie (risque anticoagulant léger) et chez les enfants de moins de 6 ans.",
+              style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500),
+            ),
+          ],
         ),
       ),
     );

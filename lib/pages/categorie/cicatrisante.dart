@@ -1,7 +1,12 @@
 import 'dart:ui';
+import 'package:application_mobile/pages/apaisantes/neem.dart';
+import 'package:application_mobile/pages/cicatrisantes/anogeussus.dart';
+import 'package:application_mobile/pages/cicatrisantes/beurre.dart';
+import 'package:application_mobile/pages/cicatrisantes/jatropha.dart';
 import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:application_mobile/pages/cicatrisantes/aloe.dart';
+import 'package:application_mobile/pages/cicatrisantes/henne.dart';
 
 class Cicatrisante extends StatefulWidget {
   const Cicatrisante({super.key});
@@ -16,9 +21,49 @@ class _CicatrisanteState extends State<Cicatrisante> {
       "titre": "Aloe Vera",
       "nomscient": "Aloe barbadensis miller",
       "description":
-          "Plante succulente reconnue pour ses vertus hydratantes et cicatrisantes.",
+          "Plante succulente aux feuilles charnues, bordées de petites dents, contenant un gel translucide.",
       "photo": "assets/images/aloe.jpeg",
       "page": const Aloe(),
+    },
+    {
+      "titre": "Henné",
+      "nomscient": "Lawsonia inermis",
+      "description":
+          "Arbuste dont les feuilles produisent un colorant rouge-orangé, très commun dans le Sahel.",
+      "photo": "assets/images/henne.jpeg",
+      "page": const Henne(),
+    },
+    {
+      "titre": "Beurre de Karité",
+      "nomscient": "Vitellaria paradoxa",
+      "description":
+          "Arbre emblématique des savanes soudanaises, produisant des noix dont on extrait une matière grasse solide à température ambiante.",
+      "photo": "assets/images/beurre.jpeg",
+      "page": const Beurre(),
+    },
+    {
+      "titre": "Jatropha",
+      "nomscient": "atropha curcas",
+      "description":
+          "Arbuste souvent utilisé pour faire des haies vives au Burkina, produisant un latex blanc collant.",
+      "photo": "assets/images/jatropha.jpeg",
+      "page": const Jatropha(),
+    },
+    {
+      "titre": "Anogeissus",
+      "nomscient": "Anogeissus leiocarpus",
+      "description":
+          "Arbre de savane à l'écorce grisâtre, très utilisé dans la pharmacopée traditionnelle burkinabè.",
+      "photo": "assets/images/ano.jpeg",
+      "page": const Anogeussus(),
+    },
+    {
+      "titre": "Neem",
+      "nomscient": "Azadirachta indica",
+      "description":
+          "Arbre robuste à feuilles persistantes, très commun dans les rues de Ouagadougou pour son ombre.",
+      "photo": "assets/images/neem.jpeg",
+      "page": const Neem(),
     },
   ];
 
@@ -128,7 +173,7 @@ class _CicatrisanteState extends State<Cicatrisante> {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
-              '${plantes.length} plante disponible',
+              '${plantes.length} plantes disponibles',
               style: const TextStyle(
                   color: Color(0xFFC8E6C9),
                   fontWeight: FontWeight.bold,

@@ -1,4 +1,7 @@
 import 'dart:ui';
+import 'package:application_mobile/pages/aromatiques/citroneille.dart';
+import 'package:application_mobile/pages/digestives/goyavier.dart';
+import 'package:application_mobile/pages/digestives/tamarinier.dart';
 import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:application_mobile/pages/digestives/menthe.dart';
@@ -24,8 +27,9 @@ class _DigestiveState extends State<Digestive> {
     },
     {
       "titre": "Menthe",
-      "nomscient": "Mentha piperita",
-      "description": "Fraîche avec de nombreuses vertus digestives.",
+      "nomscient": "Mentha x piperita",
+      "description":
+          "Plante herbacée très odorante à tiges carrées, poussant facilement dans les zones humides ou irriguées.",
       "photo": "assets/images/menthe.jpeg",
       "page": const Menthe(),
     },
@@ -33,9 +37,33 @@ class _DigestiveState extends State<Digestive> {
       "titre": "Gingembre",
       "nomscient": "Zingiber officinale",
       "description":
-          "Racine épicée aux puissantes propriétés anti-inflammatoires.",
+          "Plante vivace dont seule la partie souterraine charnue est utilisée en phytothérapie.",
       "photo": "assets/images/gingimbre.jpeg",
       "page": const Gingembre(),
+    },
+    {
+      "titre": "Citroneli",
+      "nomscient": "Cymbopogon citratus",
+      "description":
+          "Herbe vivace, corpulante, aromatique atteignant de 2 m de haut ou plus.",
+      "photo": "assets/images/citroneille.png",
+      "page": const Citroneille(),
+    },
+    {
+      "titre": "Tamarinier",
+      "nomscient": "Tamarindus indica",
+      "description":
+          "Grand arbre majestueux produisant des gousses brunes contenant une pulpe acide et des graines.",
+      "photo": "assets/images/tamarin.jpeg",
+      "page": const Tamarinier(),
+    },
+    {
+      "titre": "Goyavier",
+      "nomscient": "Psidium guajava",
+      "description":
+          "Petit arbre fruitier dont l'écorce se desquame par plaques et dont les feuilles sont opposées et nervurées.",
+      "photo": "assets/images/govavier.jpeg",
+      "page": const Goyavier(),
     }
   ];
 
