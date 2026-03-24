@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:application_mobile/pages/apaisantes/neem.dart';
+import 'package:application_mobile/pages/cicatrisantes/neem.dart';
 import 'package:application_mobile/pages/cicatrisantes/anogeussus.dart';
 import 'package:application_mobile/pages/cicatrisantes/beurre.dart';
 import 'package:application_mobile/pages/cicatrisantes/jatropha.dart';

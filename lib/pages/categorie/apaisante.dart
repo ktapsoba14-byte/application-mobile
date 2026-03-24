@@ -4,8 +4,6 @@ import 'package:application_mobile/pages/apaisantes/basilic.dart';
 import 'package:application_mobile/pages/apaisantes/lippia.dart';
 import 'package:application_mobile/pages/apaisantes/moringa.dart';
 import 'package:application_mobile/pages/apaisantes/neem.dart';
-import 'package:application_mobile/pages/aromatiques/lavande.dart';
-import 'package:application_mobile/pages/digestives/camomille.dart';
 import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -18,21 +16,6 @@ class Apaisante extends StatefulWidget {
 
 class _ApaisanteState extends State<Apaisante> {
   final plantes = [
-    {
-      "titre": "Lavande",
-      "nomscient": "Lavandula angustifolia",
-      "description": "Propriétés calmantes, relaxantes et cicatrisantes.",
-      "photo": "assets/images/plante.jpeg",
-      "page": const Lavande(),
-    },
-    {
-      "titre": "Camomille",
-      "nomscient": "Matricaria chamomilla",
-      "description":
-          "Idéale pour apaiser le système nerveux et faciliter le sommeil.",
-      "photo": "assets/images/camomille.jpeg",
-      "page": const Camomille(),
-    },
     {
       "titre": "Baobab",
       "nomscient": "Adansonia digitata",
@@ -172,6 +155,21 @@ class _ApaisanteState extends State<Apaisante> {
                 color: Colors.white.withOpacity(0.7),
                 fontSize: 15,
                 fontStyle: FontStyle.italic),
+          ),
+          const SizedBox(height: 15),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.3),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+              '${plantes.length} herbes apaisantes',
+              style: const TextStyle(
+                  color: Color(0xFF81C784),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12),
+            ),
           ),
         ],
       ),

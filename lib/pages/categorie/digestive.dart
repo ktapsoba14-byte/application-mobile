@@ -1,11 +1,10 @@
 import 'dart:ui';
-import 'package:application_mobile/pages/aromatiques/citroneille.dart';
+import 'package:application_mobile/pages/digestives/citroneille.dart';
 import 'package:application_mobile/pages/digestives/goyavier.dart';
 import 'package:application_mobile/pages/digestives/tamarinier.dart';
 import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:application_mobile/pages/digestives/menthe.dart';
-import 'package:application_mobile/pages/digestives/camomille.dart';
 import 'package:application_mobile/pages/digestives/gingembre.dart';
 
 class Digestive extends StatefulWidget {
@@ -17,14 +16,6 @@ class Digestive extends StatefulWidget {
 
 class _DigestiveState extends State<Digestive> {
   final plantes = [
-    {
-      "titre": "Camomille",
-      "nomscient": "Matricaria chamomilla",
-      "description":
-          "Plante médicinale traditionnelle aux propriétés apaisantes.",
-      "photo": "assets/images/camomille.jpeg",
-      "page": const Camomille(),
-    },
     {
       "titre": "Menthe",
       "nomscient": "Mentha x piperita",
@@ -42,10 +33,10 @@ class _DigestiveState extends State<Digestive> {
       "page": const Gingembre(),
     },
     {
-      "titre": "Citroneli",
+      "titre": "Citronnelle",
       "nomscient": "Cymbopogon citratus",
       "description":
-          "Herbe vivace, corpulante, aromatique atteignant de 2 m de haut ou plus.",
+          "Grande herbe vivace poussant en touffes denses, aux feuilles rubanées de couleur vert bleuté, dégageant une odeur de citron très fraîche.",
       "photo": "assets/images/citroneille.png",
       "page": const Citroneille(),
     },

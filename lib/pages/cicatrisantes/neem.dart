@@ -99,7 +99,7 @@ class Neem extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        "PLANTES APAISANTES",
+                        "PLANTES CICATRISANTES",
                         style: TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),

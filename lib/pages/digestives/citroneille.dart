@@ -103,7 +103,7 @@ class Citroneille extends StatelessWidget {
                         width: 8,
                       ),
                       Text(
-                        "PLANTES AROMATIQUES",
+                        "PLANTES DIGESTIVES",
                         style: TextStyle(
                             color: Colors.green, fontWeight: FontWeight.bold),
                       ),

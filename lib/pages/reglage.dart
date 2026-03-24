@@ -1,83 +1,117 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart'; // Optionnel : pour rendre les liens cliquables
 
 class PageReglages extends StatelessWidget {
   const PageReglages({super.key});
 
-  // Fonction utilitaire pour lancer des appels/mails (nécessite url_launcher)
-  Future<void> _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri)) throw 'Impossible de lancer $uri';
-  }
-
   @override
   Widget build(BuildContext context) {
+    const colorArrierePlan = Color(0xFFF1F4F1);
+    const colorCarteEtFondsDialogues = Color(0xFFFCFDFB);
+    const colorTexteTitreSombre = Color(0xFF2E4D32);
+    const colorTexteSecondaire = Color(0xFF5C6B5E);
+    const colorIconeEtDetails = Color(0xFF81C784);
+
     return Scaffold(
-      backgroundColor: const Color(0xFF0D1F1A),
-      body: Stack(
-        children: [
-          // Effet de halo lumineux en arrière-plan
-          Positioned(
-            top: -50,
-            right: -50,
-            child: Container(
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: const Color(0xFF81C784).withOpacity(0.15),
-              ),
-              child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
-                  child: Container(color: Colors.transparent)),
-            ),
+      backgroundColor: colorArrierePlan,
+      appBar: AppBar(
+        title: const Text(
+          "Paramètres",
+          style: TextStyle(
+            color: colorTexteTitreSombre,
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
           ),
-          SafeArea(
-            child: SingleChildScrollView( // Pour éviter les débordements sur petits écrans
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Réglages",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 34,
-                      fontWeight: FontWeight.bold,
-                    ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              _buildSectionCarte(
+                colorFonds: colorCarteEtFondsDialogues,
+                items: [
+                  _buildHeaderSection("Apparence", Icons.auto_awesome_mosaic_rounded, colorIconeEtDetails),
+                  _buildItem(
+                    "Style d'affichage",
+                    "Grille ou liste de plantes",
+                    onTap: () {},
                   ),
-                  const SizedBox(height: 40),
-
-                  _buildTitre("À PROPOS"),
-                  _buildCarte([
-                    _buildDetail(
-                        "Application de catalogue de plantes médicinales développée avec Flutter. Explorez les vertus de la nature."),
-                  ]),
-
-                  const SizedBox(height: 30),
-
-                  _buildTitre("SUPPORT & CONTACT"),
-                  _buildCarte([
-                    _buildItem(
-                        Icons.mail_outline_rounded,
-                        "Contactez-nous",
-                        "Une question ou un bug ?",
-                        onTap: () => _launchURL('mailto:ktapsoba14@gmail.com')),
-                    const Divider(color: Colors.white10, height: 1, indent: 70),
-                    _buildContactRow(Icons.phone_iphone_rounded, "+226 75 33 85 07"),
-                    _buildContactRow(Icons.alternate_email_rounded, "ktapsoba14@gmail.com"),
-                  ]),
-
-                  const SizedBox(height: 40),
-                  Center(
-                    child: Text(
-                      "Version 1.0.0",
-                      style: TextStyle(color: Colors.white.withOpacity(0.3), fontSize: 12),
-                    ),
+                  const Divider(height: 1, thickness: 0.5, color: Colors.black12, indent: 16, endIndent: 16),
+                  _buildItem(
+                    "Thème visuel",
+                    "Mode vert nature",
+                    onTap: () {},
+                  ),
+                  const SizedBox(height: 12),
+                  _buildHeaderSection("Mon Herbier", Icons.psychology_alt_rounded, colorIconeEtDetails),
+                  _buildItem(
+                    "Gérer mes collections",
+                    "Organiser vos plantes favorites",
+                    onTap: () {},
+                  ),
+                  const SizedBox(height: 12),
+                  _buildHeaderSection("Informations", Icons.info_outline_rounded, colorIconeEtDetails),
+                  _buildItem(
+                    "À propos de l'Herbier",
+                    "Notre mission et nos sources",
+                    onTap: () => _showAProposDialog(context, colorCarteEtFondsDialogues, colorTexteTitreSombre, colorTexteSecondaire, colorIconeEtDetails),
+                  ),
+                  const Divider(height: 1, thickness: 0.5, color: Colors.black12, indent: 16, endIndent: 16),
+                  _buildItem(
+                    "Guide d'utilisation",
+                    "Comment identifier une plante ?",
+                    onTap: () => _showAideSupportDialog(context, colorCarteEtFondsDialogues, colorTexteTitreSombre, colorTexteSecondaire, colorIconeEtDetails),
+                  ),
+                  const Divider(height: 1, thickness: 0.5, color: Colors.black12, indent: 16, endIndent: 16),
+                  _buildItem(
+                    "Langue du catalogue",
+                    "Français (Noms latins inclus)",
+                    onTap: () {},
                   ),
                 ],
               ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSectionCarte({required Color colorFonds, required List<Widget> items}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: colorFonds,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.03),
+            blurRadius: 15,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Column(children: items),
+    );
+  }
+
+  Widget _buildHeaderSection(String titre, IconData icon, Color iconColor) {
+    return Container(
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
+      child: Row(
+        children: [
+          Icon(icon, color: iconColor, size: 22),
+          const SizedBox(width: 12),
+          Text(
+            titre,
+            style: TextStyle(
+              color: iconColor.withOpacity(0.8),
+              fontSize: 14,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 1.1,
             ),
           ),
         ],
@@ -85,92 +119,118 @@ class PageReglages extends StatelessWidget {
     );
   }
 
-  // --- WIDGETS DE CONSTRUCTION ---
-
-  Widget _buildTitre(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 5, bottom: 12),
-      child: Text(
-        title,
-        style: const TextStyle(
-          color: Color(0xFF81C784),
-          fontSize: 12,
-          fontWeight: FontWeight.w800,
-          letterSpacing: 1.2,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCarte(List<Widget> items) {
-    return Container(
-      clipBehavior: Clip.antiAlias, // Pour que les effets de clic respectent les bords arrondis
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.03),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white.withOpacity(0.08)),
-      ),
-      child: Column(children: items),
-    );
-  }
-
-  Widget _buildItem(IconData icon, String title, String subtitle, {VoidCallback? onTap}) {
-    return ListTile(
-      onTap: onTap,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      leading: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: const Color(0xFF81C784).withOpacity(0.1),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Icon(icon, color: const Color(0xFF81C784), size: 22),
-      ),
-      title: Text(
-        title,
-        style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w600),
-      ),
-      subtitle: Text(
-        subtitle,
-        style: TextStyle(color: Colors.white.withOpacity(0.4), fontSize: 12),
-      ),
-      trailing: const Icon(Icons.arrow_forward_ios_rounded, color: Colors.white24, size: 14),
-    );
-  }
-
-  Widget _buildDetail(String texte) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Text(
-        texte,
-        textAlign: TextAlign.justify,
-        style: TextStyle(
-            color: Colors.white.withOpacity(0.8),
-            fontSize: 14,
-            height: 1.5,
-            fontStyle: FontStyle.italic
-        ),
-      ),
-    );
-  }
-
-  Widget _buildContactRow(IconData icon, String texte) {
+  Widget _buildItem(String title, String subtitle, {VoidCallback? onTap}) {
     return InkWell(
-      onTap: () {}, // Ajouter la logique de clic ici
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         child: Row(
           children: [
-            Icon(icon, color: const Color(0xFF81C784).withOpacity(0.7), size: 20),
-            const SizedBox(width: 15),
             Expanded(
-              child: Text(
-                texte,
-                style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w400),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(color: Color(0xFF2E4D32), fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(color: Color(0xFF5C6B5E), fontSize: 13),
+                  ),
+                ],
               ),
             ),
+            const Icon(Icons.chevron_right_rounded, color: Colors.black26, size: 20),
           ],
         ),
+      ),
+    );
+  }
+
+  void _showAideSupportDialog(BuildContext context, Color colorFonds, Color colorTitre, Color colorSecondaire, Color colorDetail) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: colorFonds,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Guide d'utilisation", style: TextStyle(color: colorTitre, fontSize: 20, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 16),
+              Text("Comment explorer le catalogue :", style: TextStyle(color: colorTitre, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 8),
+              _bullet("Recherchez par nom commun ou nom latin", colorSecondaire),
+              _bullet("Filtrez les plantes par vertus (ex: digestion)", colorSecondaire),
+              _bullet("Enregistrez vos plantes pour un accès hors-ligne", colorSecondaire),
+              _bullet("Consultez les précautions d'usage", colorSecondaire),
+              const SizedBox(height: 16),
+              Text("Une suggestion botanique ?", style: TextStyle(color: colorTitre, fontWeight: FontWeight.bold)),
+              Text("Contactez nos experts : contact@herbier.com", style: TextStyle(color: colorDetail, fontSize: 13)),
+              const SizedBox(height: 20),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text("Fermer", style: TextStyle(color: colorTitre, fontWeight: FontWeight.bold)),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showAProposDialog(BuildContext context, Color colorFonds, Color colorTitre, Color colorSecondaire, Color colorDetail) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        backgroundColor: colorFonds,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("À propos", style: TextStyle(color: colorTitre, fontSize: 20, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 16),
+              Text("L'Herbier Numérique", style: TextStyle(color: colorTitre, fontWeight: FontWeight.bold, fontSize: 16)),
+              Text("Version 1.0.0", style: TextStyle(color: colorDetail, fontSize: 13)),
+              const SizedBox(height: 16),
+              Text("Cette application répertorie les plantes médicinales et leurs bienfaits traditionnels documentés.", style: TextStyle(color: colorSecondaire, height: 1.4)),
+              const SizedBox(height: 12),
+              Text("🌿 Cultivé avec passion pour la préservation du savoir botanique.", style: TextStyle(color: colorSecondaire, fontStyle: FontStyle.italic, fontSize: 13)),
+              const SizedBox(height: 20),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text("Fermer", style: TextStyle(color: colorTitre, fontWeight: FontWeight.bold)),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _bullet(String text, Color color) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("🌱 ", style: TextStyle(fontSize: 12, color: color)),
+          Expanded(child: Text(text, style: TextStyle(color: color, fontSize: 13, height: 1.4))),
+        ],
       ),
     );
   }

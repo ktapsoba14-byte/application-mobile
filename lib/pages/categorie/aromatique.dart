@@ -6,9 +6,7 @@ import 'package:application_mobile/pages/aromatiques/ail.dart';
 import 'package:application_mobile/pages/aromatiques/yulin.dart';
 import 'package:application_mobile/pages/favoris_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:application_mobile/pages/aromatiques/lavande.dart';
 import 'package:application_mobile/pages/aromatiques/menthe.dart';
-import 'package:application_mobile/pages/aromatiques/romarin.dart';
 
 class Aromatique extends StatefulWidget {
   const Aromatique({super.key});
@@ -20,25 +18,11 @@ class Aromatique extends StatefulWidget {
 class _AromatiqueState extends State<Aromatique> {
   final plantes = [
     {
-      "titre": "Lavande",
-      "nomscient": "Lavandula angustifolia",
-      "description": "Propriétés calmantes et relaxantes.",
-      "photo": "assets/images/lavande.jpeg",
-      "page": const Lavande(),
-    },
-    {
       "titre": "Menthe",
       "nomscient": "Mentha piperita",
       "description": "Fraîche avec de nombreuses vertus digestives.",
       "photo": "assets/images/menthe.jpeg",
       "page": const Menthe(),
-    },
-    {
-      "titre": "Romarin",
-      "nomscient": "Rosmarinus officinalis",
-      "description": "Stimulante aux propriétés antioxydantes.",
-      "photo": "assets/images/romarin.jpeg",
-      "page": const Romarin(),
     },
     {
       "titre": "Citronnelle",
